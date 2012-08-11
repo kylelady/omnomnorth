@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 def make_translator(lang, fallback):
     def translate(key):
         s = str(key)

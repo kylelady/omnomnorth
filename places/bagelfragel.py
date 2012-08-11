@@ -5,14 +5,12 @@ import math
 
 from restaurant import Restaurant, State
 
+
 class BagelFragel(Restaurant):
     #summer_start = {'month': 5, 'day': 1}
     #summer_end = {'month': 8, 'day': 31}
-    #summer_hours = {'open': {'hour': 10, 'min': 0}, 'close': {'hour': 20, 'min': 0}}
-    #summer_sat_hours = {'open': {'hour': 11, 'min': 0}, 'close': {'hour': 19, 'min': 0}}
-    #summer_sun_hours = {'open': {'hour': 12, 'min': 0}, 'close': {'hour': 19, 'min': 0}}
-    reg_hours= {'open': {'hour': 6, 'min': 0}, 'close': {'hour': 16, 'min': 0}}
-    #reg_sat_hours= {'open': {'hour': 11, 'min': 0}, 'close': {'hour': 20, 'min': 0}}
+    reg_hours = {'open': {'hour': 6, 'min': 0},
+                 'close': {'hour': 16, 'min': 0}}
 
     def get_hours(self, dt):
 #        summer = {'start': date(dt.year, self.summer_start['month'],
@@ -36,9 +34,9 @@ class BagelFragel(Restaurant):
 #                            self.summer_hours['close']['min'], 0)}
 #        else:
             return {'open': time(self.reg_hours['open']['hour'],
-                            self.reg_hours['open']['min'], 0),
+                                 self.reg_hours['open']['min'], 0),
                     'close': time(self.reg_hours['close']['hour'],
-                            self.reg_hours['close']['min'], 0)}
+                                  self.reg_hours['close']['min'], 0)}
 
 
 if __name__ == '__main__':
@@ -46,7 +44,7 @@ if __name__ == '__main__':
     print 'Opening Soon: %i' % State.OPENING_SOON
     print 'Closed: %i' % State.CLOSED
     print 'Closing Soon: %i' % State.CLOSING_SOON
-    test = datetime(2012,5,26,15,15)
+    test = datetime(2012, 5, 26, 15, 15)
     p = BagelFragel()
     print p.get_hours(test)
     print p.get_status(test)

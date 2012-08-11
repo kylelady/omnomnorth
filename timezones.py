@@ -7,6 +7,7 @@ HOUR = timedelta(hours=1)
 
 # A UTC class.
 
+
 class UTC(tzinfo):
     """UTC"""
 
@@ -25,11 +26,12 @@ utc = UTC()
 # Note that FixedOffset(0, "UTC") is a different way to build a
 # UTC tzinfo object.
 
+
 class FixedOffset(tzinfo):
     """Fixed offset in minutes east from UTC."""
 
     def __init__(self, offset, name):
-        self.__offset = timedelta(minutes = offset)
+        self.__offset = timedelta(minutes=offset)
         self.__name = name
 
     def utcoffset(self, dt):
@@ -45,13 +47,14 @@ class FixedOffset(tzinfo):
 
 import time as _time
 
-STDOFFSET = timedelta(seconds = -_time.timezone)
+STDOFFSET = timedelta(seconds=-_time.timezone)
 if _time.daylight:
-    DSTOFFSET = timedelta(seconds = -_time.altzone)
+    DSTOFFSET = timedelta(seconds=-_time.altzone)
 else:
     DSTOFFSET = STDOFFSET
 
 DSTDIFF = DSTOFFSET - STDOFFSET
+
 
 class LocalTimezone(tzinfo):
 
@@ -115,6 +118,7 @@ DSTEND_1987_2006 = datetime(1, 10, 25, 1)
 DSTSTART_1967_1986 = datetime(1, 4, 24, 2)
 DSTEND_1967_1986 = DSTEND_1987_2006
 
+
 class USTimeZone(tzinfo):
 
     def __init__(self, hours, reprname, stdname, dstname):
@@ -165,7 +169,7 @@ class USTimeZone(tzinfo):
         else:
             return ZERO
 
-Eastern  = USTimeZone(-5, "Eastern",  "EST", "EDT")
-Central  = USTimeZone(-6, "Central",  "CST", "CDT")
+Eastern = USTimeZone(-5, "Eastern",  "EST", "EDT")
+Central = USTimeZone(-6, "Central",  "CST", "CDT")
 Mountain = USTimeZone(-7, "Mountain", "MST", "MDT")
-Pacific  = USTimeZone(-8, "Pacific",  "PST", "PDT")
+Pacific = USTimeZone(-8, "Pacific",  "PST", "PDT")
