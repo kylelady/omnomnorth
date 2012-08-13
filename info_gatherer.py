@@ -33,7 +33,8 @@ class InfoGatherer(object):
         }, 'plymouth': {
             'buschs': places.Buschs(),
             'olgas': places.Olgas(),
-            'sweetwaters': places.Sweetwaters()
+            'sweetwaters': places.Sweetwaters(),
+            'umi' : places.Umi()
         }
     }
 

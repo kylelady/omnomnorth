@@ -27,3 +27,4 @@ from zoup import Zoup
 from buschs import Buschs
 from olgas import Olgas
 from sweetwaters import Sweetwaters
+from umi import Umi
