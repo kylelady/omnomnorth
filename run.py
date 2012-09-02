@@ -41,13 +41,19 @@ def run():
     values['test'] = 'Hello, world!'
     status = ig.get_statuses()
     trans = make_translator(lang[selected_lang], lang['en'])
+    try:
+        with open('analytics.txt') as f:
+            analytics = f.read()
+    except IOError:
+        analytics = ''
     resp = make_response(
         render_template(
             'main.html',
             values=values,
             info=gen_info(),
             places=status,
-            translate=trans))
+            translate=trans,
+            analytics=analytics))
     resp.set_cookie('lang', selected_lang)
     return resp
 
