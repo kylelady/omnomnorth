@@ -26,7 +26,7 @@ class Mujo(Restaurant):
     reg_sat_hours = {'open': {'hour': 12, 'min': 0},
                      'close': {'hour': 18, 'min': 0}}
     reg_sun_hours = {'open': {'hour': 12, 'min': 0},
-                     'close': {'hour': 24, 'min': 0}}
+                     'close': {'hour': 23, 'min': 59}}
 
     def get_hours(self, dt):
         spring = {'start': date(dt.year, self.spring_start['month'],
