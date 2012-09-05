@@ -14,7 +14,7 @@ class Ugos(Restaurant):
     summer_fri_hours = {'open': {'hour': 8, 'min': 0},
                         'close': {'hour': 18, 'min': 0}}
     reg_hours = {'open': {'hour': 8, 'min': 0},
-                 'close': {'hour': 24, 'min': 0}}
+                 'close': {'hour': 23, 'min': 59}}
     reg_night_hours = {'open': {'hour': 0, 'min': 0},
                        'close': {'hour': 1, 'min': 0}}
     reg_fri_hours = {'open': {'hour': 10, 'min': 0},
