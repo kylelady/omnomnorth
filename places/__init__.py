@@ -27,6 +27,7 @@ from espresso_royale import EspressoRoyale
 from jj import JimmyJohns
 from kroger import Kroger
 from zoup import Zoup
+from dominos import Dominos
 
 from buschs import Buschs
 from olgas import Olgas

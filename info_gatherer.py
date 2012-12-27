@@ -33,7 +33,8 @@ class InfoGatherer(object):
             'espresso': places.EspressoRoyale(),
             'jj': places.JimmyJohns(),
             'kroger': places.Kroger(),
-            'zoup': places.Zoup()
+            'zoup': places.Zoup(),
+            'dominos': places.Dominos(),
         }, 'plymouth': {
             'buschs': places.Buschs(),
             'olgas': places.Olgas(),
