@@ -1,0 +1,33 @@
+html,body{margin:0;padding:0}
+body{font: 76% arial,sans-serif;text-align:center; background:#95A0A9}
+p{margin:0 10px 10px}
+div#header{position:relative; background:#FFEA78;padding-bottom:1em;color:#333333}
+div#header h1{height:2em;line-height:2em;margin:0;font-size:3em}
+div#header a{position:absolute;right:0;top:23px;}
+.container{background: #D75700}
+div#content{padding-bottom:1em;}
+div#content p{line-height:1.4; color:#F2F2F2}
+
+div#container2{clear:left; float:left; width:100%; overflow:hidden; background:#6DAA57}
+div#container1{float:left; width:100%; background:#3FB1DE; position:relative; right:50%}
+div#feedback{float:left; width:46%; position:relative; left:52%; overflow:hidden; text-align:left}
+div#feedback h4{margin-top: 1em; margin-bottom: 1em}
+div#credits h4{margin-top: 1em; margin-bottom: 1em}
+div#credits{float:left; width:46%; position:relative; left:56%; overflow:hidden; text-align:left}
+
+
+div#footer{background: #333;color: #FFF; clear:both; float:left; width:100%; margin:0;}
+div#footer a{display:inline;padding:0;color: #C6D5FD}
+
+div#page-border{width:75%; background:white; margin:0 auto}
+div#footer{clear:both;}
+
+div.area {width:95%; background:#F2F2F2; padding: 1em 0em; margin-top:1em; display:inline-block}
+div.area h3{color:#333333}
+div.place {width:12em; background:#CCCCCC; margin: 0.5em 0.5em; padding: 0.5em 0.3em; font-size: 1.6em; color:#F2F2F2; display:inline-block; border:2px solid #444444}
+div.status-0 { background: green }
+div.status-1 { background: deepskyblue }
+div.status-2 { background: darkred }
+div.status-3 { background: orange }
+h3 {margin: 0em; font-size:2em;}
+div.status { font-size:1.5em; font-weight:bold; margin-top:.2em}
