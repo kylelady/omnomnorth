@@ -1,62 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>OmNomNorth!</title>
-<link href="http://static.omnomnorth.net/the.css" rel="stylesheet" />
-{% include "analytics.txt" ignore missing %}
-<meta property="og:image" content="https://si0.twimg.com/profile_images/1690936185/eecs_logo_blockM_blue_background.jpg" />
+	<meta charset="utf-8">
+	<title>OmNomNorth!</title>
+
+	<link href="/static/the.css" rel="stylesheet" />
+	<link href="/static/skeleton.css" rel="stylesheet" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	{% include "analytics.txt" ignore missing %}
+	<meta property="og:image" content="https://si0.twimg.com/profile_images/1690936185/eecs_logo_blockM_blue_background.jpg" />
 </head>
 <body>
-<div id="page-border">
-<div id="container">
+	<div class="container">
 
-<div id="header">
-<h1>OmNomNorth.net</h1>
-<h2>Answering the question "What's still open on North Campus?" for {{ info.days }} days.</h2>
-</div>
+		<div id="header" class="sixteen columns">
+			<h1>OmNomNorth.net</h1>
+			<h2>Answering the question "What's still open on North Campus?" for {{ info.days }} days.</h2>
+		</div>
 
-<div id="content">
-{% for area in info['area_order'] %}
-<div class="area" id="{{ area }}">
-<h3>{{ translate(area) }}</h3>
-{% for place in places[area] %}
-	<div class="place status-{{ place.status }}" id="{{ place.id }}">
-		<div class="name">{{ translate(place.id) }}</div>
-		<div class="status">{{ translate(place.status) }}</div>
+		<div id="content" class="column">
+			{% for area in info['area_order'] %}
+			<div class="area" id="{{ area }}">
+				<h3>{{ translate(area) }}</h3>
+				{% for place in places[area] %}
+				<div class="place status-{{ place.status }}" id="{{ place.id }}">
+					<div class="name">{{ translate(place.id) }}</div>
+					<div class="status">{{ translate(place.status) }}</div>
+				</div>
+				{% endfor %}
+			</div>
+			{% endfor %}
+		</div>
+
+
+		<div id="container2">
+			<div id="container1">
+				<div class="one-half column" id="feedback">
+					<h4>Feedback</h4>
+					<p>I want your feedback, requests, and complaints! I'm doing my best here, but it's likely that something here will be wrong at some point. Let me know at <a href="mailto:feedback@omnomnorth.net">feedback@omnomnorth.net</a>.</p>
+				</div>
+				<div class="one-half column" id="credits">
+					<h4>Credits</h4>
+					<p>This website brought to you by Diet Mountain Dew, Taylor Swift, Python, and the letter &apos;Q&apos;.</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer" class="column">
+			(c) 2012 <a href="http://kylelady.com/">Kyle Lady</a>
+		</div>
+
 	</div>
-{% endfor %}
-</div>
-{% endfor %}
-</div>
-
-<!-- shamelessly copied from http://matthewjamestaylor.com/blog/equal-height-columns-cross-browser-css-no-hacks -->
-<div id="container2">
-<div id="container1">
-<div id="navigation">
-<h4>Feedback</h4>
-<p>I want your feedback, requests, and complaints! I'm doing my best here, but it's likely that something here will be wrong at some point. Let me know at <a href="mailto:feedback@omnomnorth.net">feedback@omnomnorth.net</a>.</p>
-</div>
-
-<div id="extra">
-<h4>Credits</h4>
-<p>This website brought to you by Diet Mountain Dew, Taylor Swift, Python, and the letter &apos;Q&apos;.</p>
-</div>
-</div>
-</div>
-
-<div id="footer">
-(c) 2012 <a href="http://kylelady.com/">Kyle Lady</a><!--<br />
-<small>Languages: 
-<a href="/?lang=en">Boring English</a>
-<a href="/?lang=samjackson">Samuel L. Jackson</a>
-<a href="/?lang=willsmith">Will Smith</a>
-</small>-->
-</div>
-
-</div>
-<div style="clear:both" />
-</div>
 </body>
 
 </html>
