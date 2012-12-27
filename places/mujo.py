@@ -20,13 +20,13 @@ class Mujo(Restaurant):
     summer_fri_hours = {'open': {'hour': 8, 'min': 0},
                         'close': {'hour': 18, 'min': 0}}
     reg_hours = {'open': {'hour': 7, 'min': 0},
-                 'close': {'hour': 24, 'min': 0}}
+                 'close': {'hour': 23, 'min': 59}}
     reg_night_hours = {'open': {'hour': 0, 'min': 0},
                        'close': {'hour': 2, 'min': 0}}
     reg_sat_hours = {'open': {'hour': 12, 'min': 0},
                      'close': {'hour': 18, 'min': 0}}
     reg_sun_hours = {'open': {'hour': 12, 'min': 0},
-                     'close': {'hour': 24, 'min': 0}}
+                     'close': {'hour': 23, 'min': 59}}
 
     def get_hours(self, dt):
         spring = {'start': date(dt.year, self.spring_start['month'],
