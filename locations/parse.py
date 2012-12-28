@@ -94,9 +94,13 @@ class LocationParser ():
 				# should be a day of the week then colon then hour info
 				hsplit = s.split(':', 1)
 				if len(hsplit) < 2:
-					return
-				day   = hsplit[0].strip()
-				times = hsplit[1].split('and')
+					# no day listed, assume whatever is on this list applies
+					#  to all days.
+					day = 'all'
+					times = s.split('and')
+				else:
+					day   = hsplit[0].strip()
+					times = hsplit[1].split('and')
 				range_pairs = []
 				for t in times:
 					tsplit = t.split('-')
@@ -167,6 +171,9 @@ class LocationParser ():
 	Accepts a day string and a list of (start, end) string tuples.
 	Returns a list of (start, end) integer tuples that correspond to minutes from
 	the beginning of the week.
+
+	Note: the day string can be 'all' in which it will return ranges for all
+	days of the week
 	"""
 	def get_ranges (self, day, range_pairs):
 		day = day.strip().lower()
@@ -243,12 +250,19 @@ class LocationParser ():
 
 			out_ranges.append((stotal, etotal))
 
-		# Add in the offset for the day of the week
-		day_offset_minutes = self.process_day(day)
-
 		out_shifted = []
-		for r in out_ranges:
-			out_shifted.append((r[0]+day_offset_minutes, r[1]+day_offset_minutes))
+		# Add in the offset for the day of the week
+		if day == 'all':
+			for offset in range(0, 7*24*60, 24*60):
+				for r in out_ranges:
+					out_shifted.append((r[0]+offset, r[1]+offset))
+
+		else:
+			day_offset_minutes = self.process_day(day)
+
+			out_shifted = []
+			for r in out_ranges:
+				out_shifted.append((r[0]+day_offset_minutes, r[1]+day_offset_minutes))
 
 		return out_shifted
 

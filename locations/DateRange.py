@@ -14,11 +14,11 @@ class DateRange ():
 		self.end_day     = end_day
 
 	def in_range (self, month, day):
-		if month < end_month and month > start_month:
+		if month < self.end_month and month > self.start_month:
 			return True
-		elif month == start_month and day >= start_day:
+		elif month == self.start_month and day >= self.start_day:
 			return True
-		elif month == end_month and day <= end_day:
+		elif month == self.end_month and day <= self.end_day:
 			return True
 		return False
 
