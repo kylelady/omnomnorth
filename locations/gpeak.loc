@@ -1,0 +1,11 @@
+name: Grizzly Peak
+url: http://www.grizzlypeak.net/
+description: Brewpub in Ann Arbor
+group: Downtown
+
+hours: 1/1 - 12/31
+#	thu: 10-10
+	mon: 11-2am
+#	wed: noon-8
+#	tue: 10:30-5 and 8-10 and 10:30-2
+	fri: 5-9
