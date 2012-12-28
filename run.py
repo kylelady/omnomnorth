@@ -5,25 +5,25 @@ import json
 import time
 
 from flask import Flask, make_response, request, render_template
-
-from info_gatherer import InfoGatherer
-from places import restaurant
 from translator import make_translator
 
+from locations import LocationManager
+
 with open('lang.json') as f:
-    lang = json.load(f)
+   lang = json.load(f)
 
 app = Flask(__name__)
-ig = InfoGatherer()
-
+#ig = InfoGatherer()
+lm = LocationManager.LocationManager('locations')
 
 def gen_info():
     ''' Generate static-ish info'''
     info = {}
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
-    info['area_order'] = ['oncampus', 'prfe', 'krogerville', 'plymouth', 'west']
+    info['area_order'] = ['Downtown', 'Washington', 'krogerville', 'plymouth', 'west']
     return info
+
 
 
 @app.route('/', methods=['GET', ])
@@ -35,11 +35,7 @@ def run():
     else:
         selected_lang = 'en'
 
-    values = {}
-    noon = datetime.time(12, 0)
-    tenpm = datetime.time(22, 0)
-    values['test'] = 'Hello, world!'
-    status = ig.get_statuses()
+    status = lm.getStatuses()
     trans = make_translator(lang[selected_lang], lang['en'])
     try:
         with open('analytics.txt') as f:
@@ -49,7 +45,6 @@ def run():
     resp = make_response(
         render_template(
             'main.html',
-            values=values,
             info=gen_info(),
             places=status,
             translate=trans,

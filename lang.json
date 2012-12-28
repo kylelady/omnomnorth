@@ -1,35 +1,5 @@
 {
   "en" : { 
-    "commons" : "Commons Cafe",
-    "mujo" : "Mujo Cafe",
-    "panda" : "Panda Express",
-    "quiznos" : "Quizno's",
-    "ugos" : "U-Go's",
-    "bagelfragel" : "Bagel Fragel",
-    "biggby" : "Biggby Coffee",
-    "greatplains" : "Great Plains",
-    "lucky" : "Lucky Kitchen",
-    "nothai" : "No Thai!",
-    "qdoba" : "Qdoba",
-    "saica" : "Saica",
-    "seoulst" : "Seoul Street",
-    "subway" : "Subway",
-    "syrianbakery" : "Syrian Bakery",
-    "espresso" : "Espresso Royale",
-    "jj" : "Jimmy Johns",
-    "kroger" : "Kroger",
-    "zoup" : "Zoup",
-    "buschs" : "Busch's",
-    "olgas" : "Olga's",
-    "sweetwaters" : "Sweetwaters",
-    "umi" : "Umi Sushi",
-    "jetspizza" : "Jet's Pizza",
-    "nagomi" : "Nagomi Sushi",
-    "cafemarie" : "Cafe Marie",
-    "broadwaycafe" : "Broadway Cafe",
-    "cottageinn" : "Cottage Inn Pizza",
-    "northsidegrill" : "Northside Grill",
-    "dominos" : "Dominos",
     "oncampus" : "On-Campus",
     "prfe" : "Plymouth Rd. Food Emporium",
     "krogerville" : "Krogerville",
@@ -39,13 +9,5 @@
     "1" : "Opening Soon!",
     "2" : "Closed",
     "3" : "Closing Soon!"
-  },
-  "willsmith" : {
-    "2" : "Aww hell no!",
-    "0" : "Yes yes y'all"
-  },
-  "samjackson" : {
-    "0" : "Damn straight!",
-    "2" : "Fuck!"
   }
 }

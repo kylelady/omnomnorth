@@ -24,8 +24,8 @@
 			<div class="area" id="{{ area }}">
 				<h3>{{ translate(area) }}</h3>
 				{% for place in places[area] %}
-				<div class="place status-{{ place.status }}" id="{{ place.id }}">
-					<div class="name">{{ translate(place.id) }}</div>
+				<div class="place status-{{ place.status }}" id="{{ place.name }}">
+					<div class="name">{{ translate(place.name) }}</div>
 					<div class="status">{{ translate(place.status) }}</div>
 				</div>
 				{% endfor %}
