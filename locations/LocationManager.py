@@ -12,9 +12,11 @@ class LocationManager ():
 	location_parser = parse.LocationParser()
 	# Map of location groups to a list of locations in that group
 	locations = {}
+	group_order = []
 
 	# Parse all location files and keep track of all locations
 	def __init__ (self, directory='.'):
+		self.locations = {}
 
 		files = os.listdir(directory)
 		for f in files:
@@ -30,16 +32,27 @@ class LocationManager ():
 					self.locations[group] = []
 				self.locations[group].append(li)
 
+		# Load in group order
+		with open(directory + '/group_order.txt') as f:
+			for l in f:
+				l = l.strip()
+				if len(l) > 0:
+					self.group_order.append(l)
+
+
 	def getStatuses (self):
 		out = {}
 		now = datetime.datetime.now()
+
 		for group,locs in self.locations.iteritems():
-			if group not in out:
-				out[group] = []
+			out[group] = []
 			for li in locs:
-				out[group].append({'name':li.getName(),
-					               'status':li.getStatus(now)})
+				out[group].append(li.getInfo(now))
+
 		return out
+
+	def getGroupOrder (self):
+		return self.group_order
 
 	def __str__ (self):
 		out = ''

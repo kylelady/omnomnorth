@@ -48,6 +48,14 @@ class LocationInfo ():
 
 		self.hours[self.current_date_range].insert(start, end)
 
+	def getInfo (self, dt):
+		out = {}
+		out['name']   = self.name
+		out['url']    = self.url
+		out['desc']   = self.desc
+		out['status'] = self.getStatus(dt)
+
+		return out
 
 	"""
 	dt: datetime.now()

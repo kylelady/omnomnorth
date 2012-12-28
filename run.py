@@ -21,7 +21,7 @@ def gen_info():
     info = {}
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
-    info['area_order'] = ['Downtown', 'Washington', 'krogerville', 'plymouth', 'west']
+    info['area_order'] = lm.getGroupOrder()
     return info
 
 
