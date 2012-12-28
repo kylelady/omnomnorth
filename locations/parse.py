@@ -1,5 +1,6 @@
 
-import RangeBinaryTree
+#import RangeBinaryTree
+import DateRange
 
 def enum(**enums):
 	return type('Enum', (), enums)
@@ -55,7 +56,7 @@ class LocationParser ():
 
 				# now that we have a category, process whats left on this line in that
 				# context.
-				process_remainder(lsplit[1])
+				self.process_remainder(lsplit[1])
 
 
 	def get_detail_category (self, s):
@@ -83,11 +84,12 @@ class LocationParser ():
 			self.loc_manager.setUrl(s)
 		elif self.current_category == details.DESC:
 			self.loc_manager.setDescription(s)
+		elif self.current_category == details.GROUP:
+			self.loc_manager.setGroup(s)
 		elif self.current_category == details.HOURS:
 			if '/' in s:
 				# date range
-				start_date, end_date = self.process_date_range(s)
-				self.loc_manager.set_date_range(start_date, end_date)
+				self.loc_manager.setDateRange(self.process_date_range(s))
 			else:
 				# should be a day of the week then colon then hour info
 				hsplit = s.split(':', 1)
@@ -99,7 +101,7 @@ class LocationParser ():
 				for t in times:
 					tsplit = t.split('-')
 					range_pairs.append((tsplit[0], tsplit[1]))
-				ranges = get_ranges(day, range_pairs)
+				ranges = self.get_ranges(day, range_pairs)
 				for r in ranges:
 					self.loc_manager.insertHours(r[0], r[1])
 
@@ -113,13 +115,13 @@ class LocationParser ():
 		edate_split = dates[1].split('/')
 		try:
 			smonth = int(sdate_split[0].strip())
-			sday   = int(sdate_split[1].split())
-			emonth = int(edate_split[0].split())
-			eday   = int(edate_split[1].split())
+			sday   = int(sdate_split[1].strip())
+			emonth = int(edate_split[0].strip())
+			eday   = int(edate_split[1].strip())
 		except:
 			raise LocationParseError('Not a valid date range {0}.'.format(s))
 
-		return (smonth, sday), (emonth, eday)
+		return DateRange.DateRange(smonth, sday, emonth, eday)
 
 
 	# returns base minute offset
@@ -242,7 +244,7 @@ class LocationParser ():
 			out_ranges.append((stotal, etotal))
 
 		# Add in the offset for the day of the week
-		day_offset_minutes = process_day(day)
+		day_offset_minutes = self.process_day(day)
 
 		out_shifted = []
 		for r in out_ranges:
