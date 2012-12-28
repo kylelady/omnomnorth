@@ -71,6 +71,7 @@ class RangeBinaryTree:
 		# prints the tree path
 		if root == None:
 			if self.root == None:
+				print 'No root. Tree empty.'
 				return
 			root = self.root
 

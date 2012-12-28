@@ -1,5 +1,4 @@
 
-#import RangeBinaryTree
 import DateRange
 
 def enum(**enums):
@@ -58,6 +57,8 @@ class LocationParser ():
 				# context.
 				self.process_remainder(lsplit[1])
 
+		f.close()
+
 
 	def get_detail_category (self, s):
 		s = s.strip().lower()
@@ -77,6 +78,9 @@ class LocationParser ():
 	def process_remainder (self, s):
 	#	global name, url, description, hours, current_category
 		s = s.strip()
+
+		if len(s) == 0:
+			return
 
 		if self.current_category == details.NAME:
 			self.loc_manager.setName(s)

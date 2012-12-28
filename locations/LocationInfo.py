@@ -21,6 +21,7 @@ class LocationInfo ():
 	current_date_range = None
 
 	def __init__ (self):
+		self.hours = {}
 		pass
 
 	def setName (self, name):
@@ -46,6 +47,7 @@ class LocationInfo ():
 			self.hours[drange] = RangeBinaryTree.RangeBinaryTree()
 
 		self.hours[self.current_date_range].insert(start, end)
+
 
 	"""
 	dt: datetime.now()
@@ -80,18 +82,31 @@ class LocationInfo ():
 		return State.CLOSED
 
 
+	def prettyStatus (self, status):
+		return StateNames[status]
+
+	def getName (self):
+		return self.name
+
+	def getGroup (self):
+		return self.group
+
+
 	def __str__ (self):
 	#	for i in self.hours.iteritems():
 	#		i[1].printTree()
-		return ''
+		return self.name
 
 
-t = LocationInfo()
-p = parse.LocationParser()
 
-p.parse('gpeak.loc', t)
+if __name__ == '__main__':
 
-print t
+	t = LocationInfo()
+	p = parse.LocationParser()
 
-print StateNames[t.getStatus(datetime.datetime.now())]
+	p.parse('gpeak.loc', t)
+
+	print t
+
+	print StateNames[t.getStatus(datetime.datetime.now())]
 
