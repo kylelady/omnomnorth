@@ -10,7 +10,8 @@ import parse
 class LocationManager ():
 
 	location_parser = parse.LocationParser()
-	# Map of location groups to a list of locations in that group
+	# Map of location regions to a map of locations groups to a list of
+	#  locations in that group.
 	locations = {}
 	group_order = []
 

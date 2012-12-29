@@ -1,5 +1,4 @@
 
-import parse
 import RangeBinaryTree
 import DateRange
 import datetime
@@ -15,7 +14,6 @@ class LocationInfo ():
 	name  = ''
 	url   = ''
 	desc  = ''
-	group = ''
 	address = ''
 	# map of date ranges to RangeBinaryTrees that contain open hour ranges
 	hours = {}
@@ -33,9 +31,6 @@ class LocationInfo ():
 
 	def setDescription (self, desc):
 		self.desc = desc
-
-	def setGroup (self, g):
-		self.group = g
 
 	def setAddress (self, addr):
 		self.address = addr
@@ -104,10 +99,6 @@ class LocationInfo ():
 	def getName (self):
 		return self.name
 
-	def getGroup (self):
-		return self.group
-
-
 	def __str__ (self):
 	#	for i in self.hours.iteritems():
 	#		i[1].printTree()
@@ -117,10 +108,12 @@ class LocationInfo ():
 
 if __name__ == '__main__':
 
-	t = LocationInfo()
-	p = parse.LocationParser()
+	import LocationParser
 
-	p.parse('gpeak.loc', t)
+	t = LocationInfo()
+	p = LocationParser.LocationParser()
+
+	p.parse('../places/central/downtown/gpeak.loc', t)
 
 	print t
 

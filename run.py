@@ -7,14 +7,13 @@ import time
 from flask import Flask, make_response, request, render_template
 from translator import make_translator
 
-from locations import LocationManager
+from location import LocationManager
 
 with open('lang.json') as f:
    lang = json.load(f)
 
 app = Flask(__name__)
-#ig = InfoGatherer()
-lm = LocationManager.LocationManager('locations')
+lm = LocationManager.LocationManager('places')
 
 def gen_info():
     ''' Generate static-ish info'''
