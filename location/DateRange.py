@@ -1,5 +1,6 @@
 
-
+# Represents a range of days in a single year specified by a month and a day.
+# These limitations make it easy to determine if a date is in the range.
 class DateRange ():
 
 	start_month = 0
