@@ -25,8 +25,15 @@
 				<h3>{{ translate(area) }}</h3>
 				{% for place in places[area] %}
 				<div class="place status-{{ place.status }}" id="{{ place.name }}">
-					<div class="name">{{ translate(place.name) }}</div>
-					<div class="status">{{ translate(place.status) }}</div>
+					{% if place.url is defined %}
+					<a class="place-link" href="{{ place.url }}">
+					{% endif %}
+						<h4 class="name">{{ translate(place.name) }}</h4>
+						<span class="status">{{ translate(place.status) }}</span>
+						
+					{% if place.url is defined %}
+					</a>
+					{% endif %}
 				</div>
 				{% endfor %}
 			</div>

@@ -24,10 +24,41 @@ div#footer{clear:both;}
 
 div.area {width:95%; background:#F2F2F2; padding: 1em 0em; margin-top:1em; display:inline-block}
 div.area h3{color:#333333}
-div.place {width:12em; background:#CCCCCC; margin: 0.5em 0.5em; padding: 0.5em 0.3em; font-size: 1.6em; color:#F2F2F2; display:inline-block; border:2px solid #444444}
+.place {
+	width:12em;
+	height:4em;
+	background:#CCCCCC;
+	margin: 0.5em 0.5em;
+	padding: 0;
+	font-size: 1.6em;
+	color:#F2F2F2;
+	display:inline-block;
+	border:2px solid #444444
+}
 div.status-0 { background: green }
 div.status-1 { background: deepskyblue }
 div.status-2 { background: darkred }
 div.status-3 { background: orange }
 h3 {margin: 0em; font-size:2em;}
-div.status { font-size:1.5em; font-weight:bold; margin-top:.2em}
+.status {
+	font-size:1.5em;
+	font-weight:bold;
+}
+
+.place h4 {
+	margin: 0 0 .2em 0;
+	padding-top: 0.5em;
+}
+
+.place .place-link {
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	display: block;
+	clear: bottom;
+}
+
+.place a.place-link:visited {
+	color: white;
+	text-decoration: none;
+}

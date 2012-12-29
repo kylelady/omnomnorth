@@ -5,7 +5,7 @@ def enum(**enums):
 	return type('Enum', (), enums)
 
 
-details = enum(NAME=1, URL=2, DESC=3, HOURS=4, GROUP=5)
+details = enum(NAME=1, URL=2, DESC=3, HOURS=4, GROUP=5, ADDRESS=6)
 
 
 
@@ -68,10 +68,12 @@ class LocationParser ():
 			return details.URL
 		elif s == 'desc' or s == 'description':
 			return details.DESC
-		elif s == 'group':
+		elif s == 'group' or s == 'area':
 			return details.GROUP
 		elif s == 'hours':
 			return details.HOURS
+		elif s == 'location' or s == 'address' or s == 'loc':
+			return details.ADDRESS
 		raise LocationParseError('Did not understand "{0}" as a detail type.'.format(s))
 
 
@@ -90,6 +92,8 @@ class LocationParser ():
 			self.loc_manager.setDescription(s)
 		elif self.current_category == details.GROUP:
 			self.loc_manager.setGroup(s)
+		elif self.current_category == details.ADDRESS:
+			self.loc_manager.setAddress(s)
 		elif self.current_category == details.HOURS:
 			if '/' in s:
 				# date range

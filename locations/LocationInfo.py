@@ -16,6 +16,7 @@ class LocationInfo ():
 	url   = ''
 	desc  = ''
 	group = ''
+	address = ''
 	# map of date ranges to RangeBinaryTrees that contain open hour ranges
 	hours = {}
 	current_date_range = None
@@ -36,6 +37,9 @@ class LocationInfo ():
 	def setGroup (self, g):
 		self.group = g
 
+	def setAddress (self, addr):
+		self.address = addr
+
 	def setDateRange (self, dates):
 		self.current_date_range = dates
 		self.hours[dates] = RangeBinaryTree.RangeBinaryTree()
@@ -51,8 +55,12 @@ class LocationInfo ():
 	def getInfo (self, dt):
 		out = {}
 		out['name']   = self.name
-		out['url']    = self.url
-		out['desc']   = self.desc
+		if self.url != '':
+			out['url']    = self.url
+		if self.desc != '':
+			out['desc']   = self.desc
+		if self.address != '':
+			out['address'] = self.address
 		out['status'] = self.getStatus(dt)
 
 		return out
