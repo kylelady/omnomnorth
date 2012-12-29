@@ -5,69 +5,87 @@ import datetime
 import os
 
 import LocationInfo
-import parse
+import LocationParser
 
 class LocationManager ():
 
-	location_parser = parse.LocationParser()
+	location_parser = LocationParser.LocationParser()
 	# Map of location regions to a map of locations groups to a list of
 	#  locations in that group.
 	locations = {}
 	group_order = []
 
-	# Parse all location files and keep track of all locations
+	# Parse all location files and keep track of all locations.
+	# This could be prettier somehow.
 	def __init__ (self, directory='.'):
 		self.locations = {}
 
-		files = os.listdir(directory)
-		for f in files:
-			ext = os.path.splitext(f)[1]
-			if ext == '.loc':
-				li = LocationInfo.LocationInfo()
-				self.location_parser.parse(directory + '/' + f, li)
+		root_files = os.listdir(directory)
+		for rf in root_files:
+			if os.path.isdir(directory + '/' + rf):
+				# found a region folder
+				self.locations[rf.lower()] = {}
 
-				# Check if we've seen this group, if not add it. Then add the
-				#  location to the list.
-				group = li.getGroup()
-				if group not in self.locations:
-					self.locations[group] = []
-				self.locations[group].append(li)
+				region_files = os.listdir(directory + '/' + rf)
+				for ref in region_files:
+					if os.path.isdir(directory + '/' + rf + '/' + ref):
+						# found a group folder
+						self.locations[rf.lower()][ref.lower()] = []
+
+						group_files = os.listdir(directory + '/' + rf + '/' + ref)
+						for gf in group_files:
+							ext = os.path.splitext(gf)[1]
+							if ext == '.loc':
+								li = LocationInfo.LocationInfo()
+								self.location_parser.parse(directory + '/' + rf + '/' + ref + '/' + gf, li)
+								self.locations[rf.lower()][ref.lower()].append(li)
 
 		# Load in group order
-		with open(directory + '/group_order.txt') as f:
-			for l in f:
-				l = l.strip()
-				if len(l) > 0:
-					self.group_order.append(l)
+	#	with open(directory + '/group_order.txt') as f:
+	#		for l in f:
+	#			l = l.strip()
+	#			if len(l) > 0:
+	#				self.group_order.append(l)
 
 
-	def getStatuses (self):
+	def getRegions (self):
+		return self.locations.keys()
+
+	def getStatuses (self, region):
+		region = region.strip().lower()
+		if region not in self.locations:
+			return None
+
 		out = {}
 		now = datetime.datetime.now()
 
-		for group,locs in self.locations.iteritems():
+		for group,locs in self.locations[region].iteritems():
 			out[group] = []
 			for li in locs:
 				out[group].append(li.getInfo(now))
 
 		return out
 
-	def getGroupOrder (self):
-		return self.group_order
+#	def getGroupOrder (self):
+#		return self.group_order
 
 	def __str__ (self):
 		out = ''
-		for group,locs in self.locations.iteritems():
-			out += group + '\n'
-			for li in locs:
-				status = li.prettyStatus(li.getStatus(datetime.datetime.now()))
-				name   = li.getName()
-				out += '  {0}: {1}\n'.format(name, status)
+		for region in self.locations.keys():
+			out += '{0}\n'.format(region)
+			for group,locs in self.locations[region].iteritems():
+				out += '  {0}\n'.format(group)
+				for li in locs:
+					status = li.prettyStatus(li.getStatus(datetime.datetime.now()))
+					name   = li.getName()
+					out += '    {0}: {1}\n'.format(name, status)
 
 		return out
 
 
 if __name__ == '__main__':
-	lm = LocationManager()
-	print lm.getStatuses()
+	lm = LocationManager('../places')
+	print lm.getStatuses('central')
+	print lm
+	print lm.getRegions()
 
