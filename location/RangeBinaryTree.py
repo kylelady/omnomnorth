@@ -81,6 +81,25 @@ class RangeBinaryTree:
 		if root.right != None:
 			self.printTree(root.right)
 
+			
+	def getString (self, root=None):
+		out = ''
+		if root == None:
+			if self.root == None:
+				return 'No root. Tree empty.'
+			root = self.root
+
+		if root.left != None:
+			out += self.getString(root.left)
+		out += 'start: {0}, end: {1}\n'.format(root.start, root.end)
+		if root.right != None:
+			out += self.getString(root.right)
+
+		return out			
+
+	def __str__ (self, root=None):
+		return self.getString()
+
 
 
 if __name__ == '__main__':

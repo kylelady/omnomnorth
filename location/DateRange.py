@@ -10,7 +10,7 @@ class DateRange ():
 
 	def __init__ (self, start_month, start_day, end_month, end_day):
 		self.start_month = start_month
-		self.start_end   = start_day
+		self.start_day   = start_day
 		self.end_month   = end_month
 		self.end_day     = end_day
 
@@ -27,8 +27,11 @@ class DateRange ():
 				return True
 		return False
 
+	def __str__ (self):
+		return '{0}/{1} - {2}/{3}'.format(self.start_month, self.start_day, self.end_month, self.end_day)
+
 if __name__ == '__main__':
 	d = DateRange(9, 1, 5, 1)
 	print d.in_range(10, 5)
-	print d.in_range(9, 5)
+	print d.in_range(12, 29)
 

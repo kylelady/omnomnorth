@@ -311,7 +311,6 @@ class LocationParser ():
 		for d in day:
 			day_offset_minutes = self.get_day_offset(d)
 
-			out_shifted = []
 			for r in out_ranges:
 				out_shifted.append((r[0]+day_offset_minutes, r[1]+day_offset_minutes))
 

@@ -66,7 +66,7 @@ class LocationInfo ():
 	"""
 	def getStatus (self, dt):
 
-		min_offset             = (dt.weekday()*24*60) + (dt.hour*60) + dt.minute
+		min_offset = (dt.weekday()*24*60) + (dt.hour*60) + dt.minute
 		min_offset_hour_future = min_offset + 60
 		if min_offset_hour_future > 7*24*60:
 			min_offset_hour_future -= 7*24*60
@@ -100,9 +100,11 @@ class LocationInfo ():
 		return self.name
 
 	def __str__ (self):
-	#	for i in self.hours.iteritems():
-	#		i[1].printTree()
-		return self.name
+		out = 'Name: {0}\n'.format(self.name)
+		for date_range,hours in self.hours.iteritems():
+			out += '  {0}\n'.format(date_range)
+			out += str(hours)
+		return out
 
 
 
@@ -113,7 +115,7 @@ if __name__ == '__main__':
 	t = LocationInfo()
 	p = LocationParser.LocationParser()
 
-	p.parse('../places/central/downtown/gpeak.loc', t)
+	p.parse('../places/north/oncampus/commons.loc', t)
 
 	print t
 
