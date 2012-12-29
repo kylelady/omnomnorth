@@ -7,6 +7,10 @@ def enum(*sequential, **named):
 
 
 details = enum('NAME', 'URL', 'DESC', 'HOURS', 'ADDRESS')
+# days of week
+dow = enum('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')
+
+all_days = [dow.MONDAY, dow.TUESDAY, dow.WEDNESDAY, dow.THURSDAY, dow.FRIDAY, dow.SATURDAY, dow.SUNDAY]
 
 
 class LocationParseError(Exception):
@@ -100,10 +104,17 @@ class LocationParser ():
 				if len(hsplit) < 2:
 					# no day listed, assume whatever is on this list applies
 					#  to all days.
-					day = 'all'
+					day = all_days
 					times = s.split('and')
 				else:
 					day   = hsplit[0].strip()
+					if '-' in day:
+						# day was specified as range
+						day = self.process_day_range(day)
+					elif ',' in day:
+						day = self.process_day_list(day)
+					else:
+						day = self.process_day(day)
 					times = hsplit[1].split('and')
 				range_pairs = []
 				for t in times:
@@ -132,27 +143,69 @@ class LocationParser ():
 		return DateRange.DateRange(smonth, sday, emonth, eday)
 
 
+	# Returns a list of days from a range
+	def process_day_range (self, s):
+		days_in_range = []
+
+		drange = s.split('-')
+		start = self.process_day(drange[0])
+		end   = self.process_day(drange[1])
+
+		# loop through the number version of the enum because its easier
+		while True:
+			days_in_range.append(start)
+			if start == end:
+				break
+			start += 1
+			if start > 6:
+				start = 0
+
+		return days_in_range
+
+
+	def process_day_list (self, s):
+		days_in_list = []
+
+		dlist = s.split(',')
+
+		for d in dlist:
+			try:
+				day = self.process_day(d)
+				days_in_list.append(day)
+			except LocationParseError:
+				# if bad day, just skip it
+				pass
+
+		return days_in_list
+
+
 	# returns base minute offset
 	def process_day (self, day):
-		day_offset_minutes = 0
+		day = day.strip().lower()
 		if day == 'm' or day == 'mon' or day == 'monday':
-			day_offset_minutes = 0
+			return dow.MONDAY
 		elif day == 'tu' or day == 'tue' or day == 'tuesday':
-			day_offset_minutes = 1*24*60
+			return dow.TUESDAY
 		elif day == 'w' or day == 'wed' or day == 'wednesday':
-			day_offset_minutes = 2*24*60
+			return dow.WEDNESDAY
 		elif day == 'th' or day == 'thu' or day == 'thursday':
-			day_offset_minutes = 3*24*60
+			return dow.THURSDAY
 		elif day == 'f' or day == 'fri' or day == 'friday':
-			day_offset_minutes = 4*24*60
+			return dow.FRIDAY
 		elif day == 'sa' or day == 'sat' or day == 'saturday':
-			day_offset_minutes = 5*24*60
+			return dow.SATURDAY
 		elif day == 'su' or day == 'sun' or day == 'sunday':
-			day_offset_minutes = 6*24*60
-		else:
-			raise LocationParseError('Unable to parse "{0}" as day.'.format(day))
+			return dow.SUNDAY
+		
+		raise LocationParseError('Unable to parse "{0}" as day.'.format(day))
 
-		return day_offset_minutes
+
+	# returns base minute offset
+	def get_day_offset (self, day):
+		try:
+			return (day)*24*60
+		except:
+			raise LocationParseError('Bad enum to get_day_offset')
 
 
 	#returns hours,minutes from ex. 10:30
@@ -172,15 +225,11 @@ class LocationParser ():
 
 
 	"""
-	Accepts a day string and a list of (start, end) string tuples.
+	Accepts a day string (or list) and a list of (start, end) string tuples.
 	Returns a list of (start, end) integer tuples that correspond to minutes from
 	the beginning of the week.
-
-	Note: the day string can be 'all' in which it will return ranges for all
-	days of the week
 	"""
 	def get_ranges (self, day, range_pairs):
-		day = day.strip().lower()
 
 		out_ranges = []
 
@@ -256,13 +305,11 @@ class LocationParser ():
 
 		out_shifted = []
 		# Add in the offset for the day of the week
-		if day == 'all':
-			for offset in range(0, 7*24*60, 24*60):
-				for r in out_ranges:
-					out_shifted.append((r[0]+offset, r[1]+offset))
+		if type(day) is not list:
+			day = [day]
 
-		else:
-			day_offset_minutes = self.process_day(day)
+		for d in day:
+			day_offset_minutes = self.get_day_offset(d)
 
 			out_shifted = []
 			for r in out_ranges:
