@@ -1,0 +1,10 @@
+name: Panda Express
+
+hours:
+	5/1-8/31
+	m-f: 11-7
+
+	9/1 - 4/31
+	m-th: 10:30-9:30
+	f: 10:30-8
+	sa-sun: noon-7

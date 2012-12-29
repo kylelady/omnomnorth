@@ -1,0 +1,6 @@
+name: Jet's Pizza
+
+hours:
+	m-th: 11-10
+	fr-sat: 11-midnight
+	su: noon-10

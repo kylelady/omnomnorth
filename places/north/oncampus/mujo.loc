@@ -1,0 +1,15 @@
+name: Mujo Cafe
+
+hours:
+	5/1 - 6/30
+	m-th: 8-7
+	f:    8-6
+
+	7/1 - 8/31
+	m-f: 8-6
+	
+	9/1 - 4/31
+	m-th: 7-2am
+	f: 7-6
+	sa: noon-6
+	su: noon-2am
