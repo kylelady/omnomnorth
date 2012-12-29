@@ -15,18 +15,20 @@ with open('lang/lang.json') as f:
 app = Flask(__name__)
 lm = LocationManager.LocationManager('places')
 
-def gen_info():
+def gen_info(region):
     ''' Generate static-ish info'''
     info = {}
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
-    info['area_order'] = lm.getGroupOrder('central')
+    info['area_order'] = lm.getGroupOrder(region)
     return info
 
-
-
 @app.route('/', methods=['GET', ])
-def run():
+def home():
+    return site('north')
+
+@app.route('/<region>', methods=['GET', ])
+def site(region):
     if 'lang' in request.args and request.args['lang'] in lang:
         selected_lang = request.args['lang']
     elif 'lang' in request.cookies and request.cookies['lang'] in lang:
@@ -34,7 +36,10 @@ def run():
     else:
         selected_lang = 'en'
 
-    status = lm.getStatuses('central')
+    if region == '':
+        region = 'north'
+
+    status = lm.getStatuses(region)
     trans = make_translator(lang[selected_lang], lang['en'])
     try:
         with open('analytics.txt') as f:
@@ -44,7 +49,7 @@ def run():
     resp = make_response(
         render_template(
             'main.html',
-            info=gen_info(),
+            info=gen_info(region),
             places=status,
             translate=trans,
             analytics=analytics))
@@ -52,4 +57,4 @@ def run():
     return resp
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5001, host='0.0.0.0')
