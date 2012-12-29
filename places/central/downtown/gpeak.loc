@@ -4,10 +4,7 @@ description: Brewpub in Ann Arbor
 address: 120 West Washington, Ann Arbor, MI 48104
 
 hours:
-	mon: 11-11
-	tue: 11-11
-	wed: 11-11
-	thu: 11-11
-	fri: 11-midnight
+	mon-thu: 11-11
+	fri: 11-2am
 	sat: 11-midnight
 	sun: noon-11
