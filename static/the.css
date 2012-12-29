@@ -3,7 +3,6 @@ body{font: 76% arial,sans-serif;text-align:center; background:#95A0A9}
 p{margin:0 10px 10px}
 div#header{position:relative; background:#FFEA78;padding-bottom:1em;color:#333333}
 div#header h1{height:2em;line-height:2em;margin:0;font-size:3em}
-div#header a{position:absolute;right:0;top:23px;}
 .container{background: #D75700}
 div#content{padding-bottom:1em;}
 div#content p{line-height:1.4; color:#F2F2F2}
