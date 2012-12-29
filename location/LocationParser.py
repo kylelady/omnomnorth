@@ -101,20 +101,20 @@ class LocationParser ():
 			else:
 				# should be a day of the week then colon then hour info
 				hsplit = s.split(':', 1)
+				# check if there is a : that it follows a day
+				# this could be a problem if a place opens at 7:30 everday
+				if len(hsplit) == 2:
+					try:
+						day_temp = self.process_day(hsplit[0])
+					except LocationParseError:
+						hsplit = []
 				if len(hsplit) < 2:
 					# no day listed, assume whatever is on this list applies
 					#  to all days.
 					day = all_days
 					times = s.split('and')
 				else:
-					day   = hsplit[0].strip()
-					if '-' in day:
-						# day was specified as range
-						day = self.process_day_range(day)
-					elif ',' in day:
-						day = self.process_day_list(day)
-					else:
-						day = self.process_day(day)
+					day   = self.process_day(hsplit[0])
 					times = hsplit[1].split('and')
 				range_pairs = []
 				for t in times:
@@ -148,8 +148,8 @@ class LocationParser ():
 		days_in_range = []
 
 		drange = s.split('-')
-		start = self.process_day(drange[0])
-		end   = self.process_day(drange[1])
+		start = self.process_day_single(drange[0])
+		end   = self.process_day_single(drange[1])
 
 		# loop through the number version of the enum because its easier
 		while True:
@@ -170,7 +170,7 @@ class LocationParser ():
 
 		for d in dlist:
 			try:
-				day = self.process_day(d)
+				day = self.process_day_single(d)
 				days_in_list.append(day)
 			except LocationParseError:
 				# if bad day, just skip it
@@ -181,6 +181,16 @@ class LocationParser ():
 
 	# returns base minute offset
 	def process_day (self, day):
+		if '-' in day:
+			# day was specified as range
+			return self.process_day_range(day)
+		elif ',' in day:
+			# day was specified as a comma separted list
+			return self.process_day_list(day)
+		
+		return self.process_day_single(day)
+
+	def process_day_single (self, day):
 		day = day.strip().lower()
 		if day == 'm' or day == 'mo' or day == 'mon' or day == 'monday':
 			return dow.MONDAY

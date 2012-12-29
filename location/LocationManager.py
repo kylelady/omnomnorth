@@ -3,9 +3,41 @@
 
 import datetime
 import os
+import time
 
 import LocationInfo
 import LocationParser
+
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+class PlaceWatcher (FileSystemEventHandler):
+	lm = None
+
+	def __init__(self, lm):
+		self.lm = lm
+
+	def on_created (self, event):
+		if not event.is_directory and os.path.splitext(event.src_path)[1] == '.loc':
+			self.lm.parseLocation(event.src_path)
+
+	def on_modified (self, event):
+		if not event.is_directory and os.path.splitext(event.src_path)[1] == '.loc':
+			self.lm.parseLocation(event.src_path)
+
+	def on_deleted (self, event):
+		if event.is_directory:
+			self.lm.reparse()
+		elif os.path.splitext(event.src_path)[1] == '.loc':
+			self.lm.parseLocation(event.src_path)
+
+	def on_moved (self, event):
+		if event.is_directory:
+			self.lm.reparse()
+		else:
+			self.lm.parseLocation(event.src_path)
+			self.lm.parseLocation(event.dest_path)
+
 
 class LocationManager ():
 
@@ -15,42 +47,88 @@ class LocationManager ():
 	locations = {}
 	group_order = {}
 
+	directory = None
+
 	# Parse all location files and keep track of all locations.
 	# This could be prettier somehow.
-	def __init__ (self, directory='.'):
+	def __init__ (self, directory):
+		self.directory = os.path.abspath(directory)
+
+		self.reparse()
+
+
+	def startPlaceWatch (self):
+		self.observer = Observer()
+		self.observer.schedule(PlaceWatcher(self), self.directory, recursive=True)
+		self.observer.start()
+
+
+	def reparse (self):
+
 		self.locations = {}
 		self.group_order = {}
 
-		root_files = os.listdir(directory)
+		root_files = os.listdir(self.directory)
 		for rf in root_files:
-			if os.path.isdir(directory + '/' + rf):
+			if os.path.isdir(self.directory + '/' + rf):
 				# found a region folder
 				self.locations[rf.lower()] = {}
 
-				region_files = os.listdir(directory + '/' + rf)
+				region_files = os.listdir(self.directory + '/' + rf)
 				for ref in region_files:
-					if os.path.isdir(directory + '/' + rf + '/' + ref):
+					if os.path.isdir(self.directory + '/' + rf + '/' + ref):
 						# found a group folder
 						self.locations[rf.lower()][ref.lower()] = []
 
-						group_files = os.listdir(directory + '/' + rf + '/' + ref)
-						for gf in group_files:
-							ext = os.path.splitext(gf)[1]
-							if ext == '.loc':
-								li = LocationInfo.LocationInfo()
-								self.location_parser.parse(directory + '/' + rf + '/' + ref + '/' + gf, li)
-								self.locations[rf.lower()][ref.lower()].append(li)
+						self.parseGroup(rf.lower(), ref.lower())
 
 				# Load in group order
 				self.group_order[rf.lower()] = []
 				try:
-					with open(directory + '/' + rf + '/order.txt') as f:
+					with open(self.directory + '/' + rf + '/order.txt') as f:
 						for l in f:
 							l = l.strip().lower()
 							if len(l) > 0:
 								self.group_order[rf.lower()].append(l)
 				except IOError:
 					self.group_order[rf.lower()] = self.locations[rf.lower()].keys()
+
+
+	"""
+	Parse a location by removing all locations in the group and rescanning
+	the group.
+
+	path: must be a full path to a .loc file
+	"""
+	def parseLocation (self, path):
+		# remove the base so we can accurately get region and group
+		path = path.replace(self.directory, '')
+		folders = path.split('/')
+		if len(folders) < 3:
+			return
+
+		region = folders[-3].strip().lower()
+		group  = folders[-2].strip().lower()
+
+		if region not in self.locations:
+			self.locations[region] = {}
+
+		# if the group never existed, create it
+		# if it did, delete the old list and reparse
+		self.locations[region][group] = []
+
+		self.parseGroup(region, group)
+
+
+	def parseGroup (self, region, group):
+
+		group_path  = self.directory + '/' + region + '/' + group
+		group_files = os.listdir(group_path)
+		for gf in group_files:
+			if os.path.splitext(gf)[1] == '.loc':
+				li = LocationInfo.LocationInfo()
+				self.location_parser.parse(group_path + '/' + gf, li)
+				self.locations[region][group].append(li)
 
 
 	def getRegions (self):
@@ -64,7 +142,7 @@ class LocationManager ():
 		out = {}
 		now = datetime.datetime.now()
 
-		for group,locs in self.locations[region].iteritems():
+		for group,locs in sorted(self.locations[region].iteritems()):
 			out[group] = []
 			for li in locs:
 				out[group].append(li.getInfo(now))
@@ -91,8 +169,12 @@ class LocationManager ():
 
 if __name__ == '__main__':
 	lm = LocationManager('../places')
-	print lm.getStatuses('central')
-	print lm.getStatuses('north')
 	print lm
 	print lm.getRegions()
+	lm.startPlaceWatch()
+	try:
+		while True:
+			time.sleep(1)
+	except KeyboardInterrupt:
+		quit()
 

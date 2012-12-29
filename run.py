@@ -14,6 +14,7 @@ with open('lang/lang.json') as f:
 
 app = Flask(__name__)
 lm = LocationManager.LocationManager('places')
+lm.startPlaceWatch()
 
 def gen_info(region):
     ''' Generate static-ish info'''
