@@ -87,6 +87,7 @@ class LocationManager ():
 if __name__ == '__main__':
 	lm = LocationManager('../places')
 	print lm.getStatuses('central')
+	print lm.getStatuses('north')
 	print lm
 	print lm.getRegions()
 

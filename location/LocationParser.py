@@ -72,7 +72,7 @@ class LocationParser ():
 			return details.URL
 		elif s == 'desc' or s == 'description':
 			return details.DESC
-		elif s == 'hours':
+		elif s == 'hours' or s == 'hour':
 			return details.HOURS
 		elif s == 'location' or s == 'address' or s == 'loc':
 			return details.ADDRESS
