@@ -1,0 +1,6 @@
+name: Isalita
+
+hours:
+	tu-th: 4pm-10
+	fr-sa: 4pm-11
+	su:    4pm-9
