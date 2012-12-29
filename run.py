@@ -2,6 +2,7 @@
 
 import datetime
 import json
+import os
 import time
 
 from flask import Flask, make_response, request, render_template
@@ -9,8 +10,14 @@ from utils.translator import make_translator
 
 from location import LocationManager
 
-with open('lang/lang.json') as f:
-   lang = json.load(f)
+# Load language files
+lang = {}
+langs = os.listdir('lang')
+for l in langs:
+    name,ext = os.path.splitext(l)
+    if ext == '.json':
+        with open('lang/' + l, 'r') as f:
+            lang[name] = json.load(f)
 
 app = Flask(__name__)
 lm = LocationManager.LocationManager('places')
@@ -38,7 +45,7 @@ def site(region):
     else:
         selected_lang = 'en'
 
-    if region == '':
+    if region == '' or region not in lm.getRegions():
         region = 'north'
 
     status = lm.getStatuses(region)

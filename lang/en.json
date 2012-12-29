@@ -1,21 +1,20 @@
-{
-  "en" : { 
-    "north" : "North",
+{ 
+	"north" : "North",
 	"central" : "Central",
 	"oncampus" : "On-Campus",
-    "prfe" : "Plymouth Rd. Food Emporium",
-    "krogerville" : "Krogerville",
-    "plymouth" : "The Outer Rim",
-    "west" : "Plymouth and Broadway",
-    "downtown" : "Downtown",
+	"prfe" : "Plymouth Rd. Food Emporium",
+	"krogerville" : "Krogerville",
+	"plymouth" : "The Outer Rim",
+	"west" : "Plymouth and Broadway",
+	"downtown" : "Downtown",
 	"liberty" : "Liberty Street",
 	"main" : "Main Street",
 	"southu" : "South University",
 	"westmain" : "West of Main",
 	"state" : "State Street",
 	"0" : "Open",
-    "1" : "Opening Soon!",
-    "2" : "Closed",
-    "3" : "Closing Soon!"
-  }
+	"1" : "Opening Soon!",
+	"2" : "Closed",
+	"3" : "Closing Soon!"
 }
+
