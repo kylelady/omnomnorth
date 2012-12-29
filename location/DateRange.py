@@ -21,5 +21,14 @@ class DateRange ():
 			return True
 		elif month == self.end_month and day <= self.end_day:
 			return True
+		elif self.start_month > self.end_month:
+			# wrap around end
+			if month > self.start_month or month < self.end_month:
+				return True
 		return False
+
+if __name__ == '__main__':
+	d = DateRange(9, 1, 5, 1)
+	print d.in_range(10, 5)
+	print d.in_range(9, 5)
 
