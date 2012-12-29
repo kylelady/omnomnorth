@@ -13,12 +13,13 @@ class LocationManager ():
 	# Map of location regions to a map of locations groups to a list of
 	#  locations in that group.
 	locations = {}
-#	group_order = []
+	group_order = {}
 
 	# Parse all location files and keep track of all locations.
 	# This could be prettier somehow.
 	def __init__ (self, directory='.'):
 		self.locations = {}
+		self.group_order = {}
 
 		root_files = os.listdir(directory)
 		for rf in root_files:
@@ -40,12 +41,16 @@ class LocationManager ():
 								self.location_parser.parse(directory + '/' + rf + '/' + ref + '/' + gf, li)
 								self.locations[rf.lower()][ref.lower()].append(li)
 
-		# Load in group order
-	#	with open(directory + '/group_order.txt') as f:
-	#		for l in f:
-	#			l = l.strip()
-	#			if len(l) > 0:
-	#				self.group_order.append(l)
+				# Load in group order
+				self.group_order[rf.lower()] = []
+				try:
+					with open(directory + '/' + rf + '/order.txt') as f:
+						for l in f:
+							l = l.strip().lower()
+							if len(l) > 0:
+								self.group_order[rf.lower()].append(l)
+				except IOError:
+					self.group_order[rf.lower()] = self.locations[rf.lower()].keys()
 
 
 	def getRegions (self):
@@ -68,7 +73,7 @@ class LocationManager ():
 
 	def getGroupOrder (self, region):
 		region = region.strip().lower()
-		return self.locations[region].keys()
+		return self.group_order[region]
 
 	def __str__ (self):
 		out = ''
