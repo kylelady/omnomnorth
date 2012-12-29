@@ -182,17 +182,17 @@ class LocationParser ():
 	# returns base minute offset
 	def process_day (self, day):
 		day = day.strip().lower()
-		if day == 'm' or day == 'mon' or day == 'monday':
+		if day == 'm' or day == 'mo' or day == 'mon' or day == 'monday':
 			return dow.MONDAY
 		elif day == 'tu' or day == 'tue' or day == 'tuesday':
 			return dow.TUESDAY
-		elif day == 'w' or day == 'wed' or day == 'wednesday':
+		elif day == 'w' or day == 'we' or day == 'wed' or day == 'wednesday':
 			return dow.WEDNESDAY
 		elif day == 'th' or day == 'thu' or day == 'thursday':
 			return dow.THURSDAY
 		elif day == 'f' or day == 'fri' or day == 'friday':
 			return dow.FRIDAY
-		elif day == 'sa' or day == 'sat' or day == 'saturday':
+		elif day == 'sa' or day == 'fr' or day == 'sat' or day == 'saturday':
 			return dow.SATURDAY
 		elif day == 'su' or day == 'sun' or day == 'sunday':
 			return dow.SUNDAY
