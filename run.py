@@ -5,11 +5,11 @@ import json
 import time
 
 from flask import Flask, make_response, request, render_template
-from translator import make_translator
+from utils.translator import make_translator
 
 from location import LocationManager
 
-with open('lang.json') as f:
+with open('lang/lang.json') as f:
    lang = json.load(f)
 
 app = Flask(__name__)
@@ -20,7 +20,7 @@ def gen_info():
     info = {}
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
-    info['area_order'] = lm.getGroupOrder()
+    info['area_order'] = lm.getGroupOrder('central')
     return info
 
 
@@ -34,7 +34,7 @@ def run():
     else:
         selected_lang = 'en'
 
-    status = lm.getStatuses()
+    status = lm.getStatuses('central')
     trans = make_translator(lang[selected_lang], lang['en'])
     try:
         with open('analytics.txt') as f:

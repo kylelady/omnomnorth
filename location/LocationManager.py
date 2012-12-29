@@ -13,7 +13,7 @@ class LocationManager ():
 	# Map of location regions to a map of locations groups to a list of
 	#  locations in that group.
 	locations = {}
-	group_order = []
+#	group_order = []
 
 	# Parse all location files and keep track of all locations.
 	# This could be prettier somehow.
@@ -66,8 +66,9 @@ class LocationManager ():
 
 		return out
 
-#	def getGroupOrder (self):
-#		return self.group_order
+	def getGroupOrder (self, region):
+		region = region.strip().lower()
+		return self.locations[region].keys()
 
 	def __str__ (self):
 		out = ''
