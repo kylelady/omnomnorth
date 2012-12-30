@@ -1,0 +1,6 @@
+name: Panera
+
+hours:
+	m-sa: 6-9
+	su: 7-8
+
