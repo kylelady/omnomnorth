@@ -306,7 +306,7 @@ class LocationParser ():
 						e_hour += 12
 
 			# Check if the place is open after midnight
-			if e_hour < s_hour:
+			if e_hour <= s_hour:
 				# add 12 hours until we get to the next day
 				while e_hour < 24:
 					e_hour += 12
