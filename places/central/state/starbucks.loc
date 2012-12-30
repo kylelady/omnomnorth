@@ -1,0 +1,8 @@
+name: Starbucks
+address: 222 S State, Ann Arbor, MI 48104
+
+
+hours:
+	m-f: 5:30-1am
+	sa-sun: 7-1am
+

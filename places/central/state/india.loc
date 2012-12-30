@@ -1,0 +1,9 @@
+name: Taste of India
+url: http://www.tasteofindiaaa.com/
+
+hours:
+	m-th: 11:30-3 and 5-10
+	f: 11:30-3 and 5-10:30
+	sa: noon-3:30 and 5-10:30
+	su: noon-3:30 and 5-10
+
