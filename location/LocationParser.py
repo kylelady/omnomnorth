@@ -41,6 +41,10 @@ class LocationParser ():
 		for l in lines:
 			l = l.strip('\n')
 
+			# remove any comment
+			l = l.split(' #', 1)[0]
+			l = l.split('\t#', 1)[0]
+
 			if len(l) == 0 or l[0] == '#':
 				# empty or comment
 				continue
