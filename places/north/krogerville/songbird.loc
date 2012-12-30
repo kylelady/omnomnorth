@@ -1,0 +1,9 @@
+name: Songbird Cafe
+url: http://thesongbirdcafeannarbor.com/
+
+hours:
+	m: 7:30-6
+	tu-f: 7:30-9
+	sa: 8-9
+	su: 8-8
+

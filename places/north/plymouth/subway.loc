@@ -1,0 +1,7 @@
+name: Subway
+
+hours:
+	m-f: 7-11
+	sa: 8-11
+	su: 9-11
+

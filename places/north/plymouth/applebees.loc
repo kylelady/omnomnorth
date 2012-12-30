@@ -1,0 +1,7 @@
+name: Applebee's
+
+hours:
+	m-th: 11-11:30
+	f-sa: 11-midnight
+	su: 11-11
+
