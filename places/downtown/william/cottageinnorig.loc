@@ -1,0 +1,8 @@
+name: Cottage Inn
+url: http://originalcottageinn.com/
+
+hours:
+	m-th: 11-11
+	f-sa: 11-midnight
+	sun:  11-10
+
