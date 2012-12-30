@@ -18,12 +18,22 @@ class PlaceWatcher (FileSystemEventHandler):
 		self.lm = lm
 
 	def on_created (self, event):
-		if not event.is_directory and os.path.splitext(event.src_path)[1] == '.loc':
-			self.lm.parseLocation(event.src_path)
+		if not event.is_directory:
+			name,ext = os.path.splitext(event.src_path)
+			if ext == '.loc':
+				self.lm.parseLocation(event.src_path)
+			elif name[-5:] == 'order' and ext == '.txt':
+				# created a new order file, probably also created a new region
+				# just reparse
+				self.lm.reparse()
 
 	def on_modified (self, event):
-		if not event.is_directory and os.path.splitext(event.src_path)[1] == '.loc':
-			self.lm.parseLocation(event.src_path)
+		if not event.is_directory:
+			name,ext = os.path.splitext(event.src_path)
+			if ext == '.loc':
+				self.lm.parseLocation(event.src_path)
+			elif name[-5:] == 'order' and ext == '.txt':
+				self.lm.parseOrder(event.src_path)
 
 	def on_deleted (self, event):
 		if event.is_directory:
@@ -83,15 +93,7 @@ class LocationManager ():
 						self.parseGroup(rf.lower(), ref.lower())
 
 				# Load in group order
-				self.group_order[rf.lower()] = []
-				try:
-					with open(self.directory + '/' + rf + '/order.txt') as f:
-						for l in f:
-							l = l.strip().lower()
-							if len(l) > 0:
-								self.group_order[rf.lower()].append(l)
-				except IOError:
-					self.group_order[rf.lower()] = self.locations[rf.lower()].keys()
+				self.parseOrder(self.directory + '/' + rf + '/order.txt')
 
 
 	"""
@@ -130,6 +132,23 @@ class LocationManager ():
 				self.location_parser.parse(group_path + '/' + gf, li)
 				self.locations[region][group].append(li)
 
+	def parseOrder (self, order_path):
+		path = order_path.replace(self.directory, '')
+		folders = path.split('/')
+		if len(folders) != 3:
+			return
+
+		region = folders[-2].lower()
+
+		self.group_order[region] = []
+		try:
+			with open(order_path) as f:
+				for l in f:
+					l = l.strip().lower()
+					if len(l) > 0:
+						self.group_order[region].append(l)
+		except IOError:
+			self.group_order[region] = self.locations[region].keys()
 
 	def getRegions (self):
 		return self.locations.keys()
@@ -157,7 +176,8 @@ class LocationManager ():
 		out = ''
 		for region in self.locations.keys():
 			out += '{0}\n'.format(region)
-			for group,locs in self.locations[region].iteritems():
+			for group in self.group_order[region]:
+				locs = self.locations[region][group]
 				out += '  {0}\n'.format(group)
 				for li in locs:
 					status = li.prettyStatus(li.getStatus(datetime.datetime.now()))
