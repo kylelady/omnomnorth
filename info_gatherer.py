@@ -17,8 +17,12 @@ class InfoGatherer(object):
         }, 'prfe': {
             'bagelfragel': places.BagelFragel(),
             'biggby': places.Biggby(),
+            'cafemarie': places.CafeMarie(),
             'greatplains': places.GreatPlains(),
+            'jetspizza': places.JetsPizza(),
             'lucky': places.LuckyKitchen(),
+            'marcos': places.MarcosPizza(),
+            'nagomi': places.Nagomi(),
             'nothai': places.NoThai(),
             'qdoba': places.Qdoba(),
             'saica': places.Saica(),
@@ -29,12 +33,17 @@ class InfoGatherer(object):
             'espresso': places.EspressoRoyale(),
             'jj': places.JimmyJohns(),
             'kroger': places.Kroger(),
-            'zoup': places.Zoup()
+            'zoup': places.Zoup(),
+            'dominos': places.Dominos(),
         }, 'plymouth': {
             'buschs': places.Buschs(),
             'olgas': places.Olgas(),
             'sweetwaters': places.Sweetwaters(),
             'umi' : places.Umi()
+        }, 'west': {
+            'broadwaycafe' : places.BroadwayCafe(),
+            'cottageinn' : places.CottageInn(),
+            'northsidegrill': places.NorthsideGrill()
         }
     }
 
