@@ -128,9 +128,13 @@ class LocationManager ():
 		group_files = os.listdir(group_path)
 		for gf in group_files:
 			if os.path.splitext(gf)[1] == '.loc':
-				li = LocationInfo.LocationInfo()
-				self.location_parser.parse(group_path + '/' + gf, li)
-				self.locations[region][group].append(li)
+				try:
+					li = LocationInfo.LocationInfo()
+					self.location_parser.parse(group_path + '/' + gf, li)
+					self.locations[region][group].append(li)
+				except LocationParser.LocationParseError as e:
+					# Some error in this config file
+					print e
 
 	def parseOrder (self, order_path):
 		path = order_path.replace(self.directory, '')
