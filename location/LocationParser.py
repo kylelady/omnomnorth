@@ -1,4 +1,5 @@
 
+import codecs
 import DateRange
 
 def enum(*sequential, **named):
@@ -29,7 +30,8 @@ class LocationParser ():
 
 	def parse (self, filename, loc_info):
 		try:
-			f = open(filename, 'r')
+		#	f = open(filename, 'r')
+			f = codecs.open(filename, encoding='utf-8')
 		except IOError:
 			raise LocationParseError('Could not open "{0}".'.format(filename))
 

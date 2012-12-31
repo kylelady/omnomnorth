@@ -3,7 +3,7 @@
 
 def make_translator(lang, fallback):
     def translate(key):
-        s = str(key)
+        s = unicode(key)
         if s in lang:
             return lang[s]
         elif s in fallback:
