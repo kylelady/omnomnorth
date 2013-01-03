@@ -59,6 +59,7 @@ class HappyHour ():
 					while ehour > 12:
 						ehour -= 12
 
+					# format output string
 					if shour == 12 and smin == 0:
 						start = 'Midnight' if stail == 'am' else 'Noon'
 					else:
