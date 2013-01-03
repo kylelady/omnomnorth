@@ -24,6 +24,8 @@ hours:
 	<day>: <time>[am|pm]-<time>[am|pm]
 	<day>-<day>: <time>-<time>
 	<day>,<day>,<day>: <time>-<time>
+happy hour:
+	<same format as hours>
 ~~~~~~~~~~~~~~~~~~~~
 
 Name, address, url, and description are just text fields. Hours can take a
@@ -47,6 +49,9 @@ hours:
 	f: 11-2am
 	saturday: 11-midnight
 	su: noon-11
+
+happy hour:
+	m-f: 5pm-6pm
 ~~~~~
 
 ### Example 2
@@ -66,7 +71,18 @@ hours:
 	su: noon-midnight
 ~~~~~
 
+### Aliases
 
+Many sections can be refernced by a couple names, if one makes you happier.
+
+~~~~~~~
+NAME:      ['name'],
+URL:       ['url', 'website'],
+DESC:      ['desc', 'description'],
+HOURS:     ['hours', 'hour'],
+ADDRESS:   ['location', 'loc', 'address', 'addr'],
+HAPPYHOUR: ['happy hour', 'happy hours', 'happy'],
+~~~~~~~
 
 
 Group Ordering
