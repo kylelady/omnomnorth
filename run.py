@@ -50,6 +50,12 @@ def site(region):
 
     status = lm.getStatuses(region)
     trans = make_translator(lang[selected_lang], lang['en'])
+
+    title = 'OmNom{0}!'.format(region.title())
+
+    info = gen_info(region)
+    info['title'] = title
+
     try:
         with open('analytics.txt') as f:
             analytics = f.read()
@@ -58,7 +64,7 @@ def site(region):
     resp = make_response(
         render_template(
             'main.html',
-            info=gen_info(region),
+            info=info,
             places=status,
             translate=trans,
             analytics=analytics))
