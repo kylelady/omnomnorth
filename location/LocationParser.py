@@ -62,7 +62,7 @@ class LocationParser ():
 				# empty or comment
 				continue
 
-			elif l[0] == '\t' or l[0:3] == '    ':
+			elif self.is_tab(l[0:4]):
 				# same category
 				self.process_remainder(l)
 
@@ -79,6 +79,14 @@ class LocationParser ():
 				self.process_remainder(lsplit[1])
 
 		f.close()
+
+
+	def is_tab (self, s):
+		if s.count('\t') > 0:
+			return True
+		if s.count(' ') > 3:
+			return True
+		return False
 
 
 	# Given a category text string, try to match it to a category and return
