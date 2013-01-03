@@ -19,7 +19,7 @@ detail_categorize = {
 	details.DESC:      ['desc', 'description'],
 	details.HOURS:     ['hours', 'hour'],
 	details.ADDRESS:   ['location', 'loc', 'address', 'addr'],
-	details.HAPPYHOUR: ['happy hour', 'happy hours'],
+	details.HAPPYHOUR: ['happy hour', 'happy hours', 'happy'],
 }
 
 class LocationParseError(Exception):
@@ -288,7 +288,9 @@ class LocationParser ():
 					s_hour_offset += 12
 					start = start.replace('pm', '').strip()
 				s_hour, s_minute = self.process_hours_minutes(start)
-				s_hour += s_hour_offset
+				if s_hour != 12:
+					# Only apply the pm offset to non twelve hours
+					s_hour += s_hour_offset
 
 			# Process the end time.
 			e_hour_offset = 0
