@@ -19,7 +19,7 @@ detail_categorize = {
 	details.DESC:      ['desc', 'description'],
 	details.HOURS:     ['hours', 'hour'],
 	details.ADDRESS:   ['location', 'loc', 'address', 'addr'],
-	details.HAPPYHOUR: ['happy hour', 'happy hours', 'happy'],
+	details.HAPPYHOUR: ['happyhour', 'happyhours', 'happy'],
 }
 
 class LocationParseError(Exception):
@@ -92,7 +92,7 @@ class LocationParser ():
 	# Given a category text string, try to match it to a category and return
 	#  the category enum.
 	def get_detail_category (self, s):
-		s = s.strip().lower()
+		s = ''.join(s.split()).lower()
 		for det,words in detail_categorize.iteritems():
 			if s in words:
 				return det
