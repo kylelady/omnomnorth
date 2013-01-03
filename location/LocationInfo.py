@@ -11,13 +11,13 @@ State = enum('OPEN', 'OPENING_SOON', 'CLOSED', 'CLOSING_SOON')
 StateNames = ['OPEN', 'OPENING_SOON', 'CLOSED', 'CLOSING_SOON']
 
 class LocationInfo ():
-	name  = ''
-	url   = ''
-	desc  = ''
-	address = ''
+	name       = ''
+	url        = ''
+	desc       = ''
+	address    = ''
 	# map of date ranges to RangeBinaryTrees that contain open hour ranges
-	hours = {}
-	current_date_range = None
+	hours      = {}
+	happyhours = {}
 
 	def __init__ (self):
 		self.hours = {}
@@ -35,17 +35,21 @@ class LocationInfo ():
 	def setAddress (self, addr):
 		self.address = addr
 
-	def setDateRange (self, dates):
-		self.current_date_range = dates
-		self.hours[dates] = RangeBinaryTree.RangeBinaryTree()
+#	def setDateRange (self, dates):
+#		self.current_date_range = dates
+#		self.hours[dates] = RangeBinaryTree.RangeBinaryTree()
 
-	def insertHours (self, start, end):
-		if self.current_date_range == None:
-			drange = DateRange.DateRange(1, 1, 12, 31)
-			self.current_date_range = drange
-			self.hours[drange] = RangeBinaryTree.RangeBinaryTree()
+	def insertHours (self, start, end, date_range):
+		if date_range not in self.hours:
+			self.hours[date_range] = RangeBinaryTree.RangeBinaryTree()
 
-		self.hours[self.current_date_range].insert(start, end)
+		self.hours[date_range].insert(start, end)
+
+	def insertHappyHours (self, start, end, date_range):
+		if date_range not in self.happyhours:
+			self.happyhours[date_range] = HappyHours.HappyHours()
+
+		self.happyhours[date_range].insert(start, end)
 
 	def getInfo (self, dt):
 		out = {}
@@ -57,8 +61,17 @@ class LocationInfo ():
 		if self.address != '':
 			out['address'] = self.address
 		out['status'] = self.getStatus(dt)
+		out['happy_hours'] = self.getHappyHour(dt)
 
 		return out
+
+	def getHappyHour (self, dt):
+		hhours = []
+		for date_range,hours in self.happyhours.iteritems():
+			if date_range.in_range(dt.month, dt.day):
+				hhours = hours.get(dt)
+				break
+		return hhours
 
 	"""
 	dt: datetime.now()

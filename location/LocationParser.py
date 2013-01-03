@@ -30,8 +30,9 @@ class LocationParseError(Exception):
 
 
 class LocationParser ():
-	current_category = None
-	loc_manager      = None
+	current_category   = None
+	loc_manager        = None
+	current_date_range = None
 
 	def __init__ (self):
 		pass
@@ -45,6 +46,8 @@ class LocationParser ():
 
 		# save location manager
 		self.loc_manager = loc_info
+		# set default date range
+		self.current_date_range = DateRange.DateRange(1, 1, 12, 31)
 
 		lines = f.readlines()
 
@@ -105,34 +108,47 @@ class LocationParser ():
 		elif self.current_category == details.ADDRESS:
 			self.loc_manager.setAddress(s)
 		elif self.current_category == details.HOURS:
-			if '/' in s:
-				# date range
-				self.loc_manager.setDateRange(self.process_date_range(s))
+			self.process_hours_remainder(s)
+		elif self.current_category == details.HAPPYHOUR:
+			self.process_hours_remainder(s)
+
+
+	def process_hours_remainder (self, s):
+		if '/' in s:
+			# date range
+			self.current_date_range = self.process_date_range(s)
+		else:
+			# should be a day of the week then colon then hour info
+			hsplit = s.split(':', 1)
+			# check if there is a : that it follows a day
+			# this could be a problem if a place opens at 7:30 everday
+			if len(hsplit) == 2:
+				try:
+					day_temp = self.process_day(hsplit[0])
+				except LocationParseError:
+					hsplit = []
+			if len(hsplit) < 2:
+				# no day listed, assume whatever is on this list applies
+				#  to all days.
+				day = all_days
+				times = s.split('and')
 			else:
-				# should be a day of the week then colon then hour info
-				hsplit = s.split(':', 1)
-				# check if there is a : that it follows a day
-				# this could be a problem if a place opens at 7:30 everday
-				if len(hsplit) == 2:
-					try:
-						day_temp = self.process_day(hsplit[0])
-					except LocationParseError:
-						hsplit = []
-				if len(hsplit) < 2:
-					# no day listed, assume whatever is on this list applies
-					#  to all days.
-					day = all_days
-					times = s.split('and')
-				else:
-					day   = self.process_day(hsplit[0])
-					times = hsplit[1].split('and')
-				range_pairs = []
-				for t in times:
-					tsplit = t.split('-')
-					range_pairs.append((tsplit[0], tsplit[1]))
-				ranges = self.get_ranges(day, range_pairs)
-				for r in ranges:
-					self.loc_manager.insertHours(r[0], r[1])
+				day   = self.process_day(hsplit[0])
+				times = hsplit[1].split('and')
+			range_pairs = []
+			for t in times:
+				tsplit = t.split('-')
+				range_pairs.append((tsplit[0], tsplit[1]))
+			ranges = self.get_ranges(day, range_pairs)
+			for r in ranges:
+				if self.current_category == details.HOURS:
+					self.loc_manager.insertHours(r[0],
+					                             r[1],
+					                             self.current_date_range)
+				elif self.current_category == details.HAPPYHOUR:
+					self.loc_manager.insertHappyHours(r[0],
+					                                  r[1],
+					                                  self.current_date_range)
 
 
 	def process_date_range (self, s):
