@@ -2,6 +2,7 @@
 import RangeBinaryTree
 import DateRange
 import datetime
+import HappyHour
 
 def enum(*sequential, **named):
     enums = dict(zip(sequential, range(len(sequential))), **named)
@@ -20,8 +21,8 @@ class LocationInfo ():
 	happyhours = {}
 
 	def __init__ (self):
-		self.hours = {}
-		pass
+		self.hours      = {}
+		self.happyhours = {}
 
 	def setName (self, name):
 		self.name = name
@@ -35,10 +36,6 @@ class LocationInfo ():
 	def setAddress (self, addr):
 		self.address = addr
 
-#	def setDateRange (self, dates):
-#		self.current_date_range = dates
-#		self.hours[dates] = RangeBinaryTree.RangeBinaryTree()
-
 	def insertHours (self, start, end, date_range):
 		if date_range not in self.hours:
 			self.hours[date_range] = RangeBinaryTree.RangeBinaryTree()
@@ -47,7 +44,7 @@ class LocationInfo ():
 
 	def insertHappyHours (self, start, end, date_range):
 		if date_range not in self.happyhours:
-			self.happyhours[date_range] = HappyHours.HappyHours()
+			self.happyhours[date_range] = HappyHour.HappyHour()
 
 		self.happyhours[date_range].insert(start, end)
 
@@ -62,6 +59,8 @@ class LocationInfo ():
 			out['address'] = self.address
 		out['status'] = self.getStatus(dt)
 		out['happy_hours'] = self.getHappyHour(dt)
+		if len(out['happy_hours']) == 0:
+			del out['happy_hours']
 
 		return out
 

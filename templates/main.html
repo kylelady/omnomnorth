@@ -30,13 +30,20 @@
 				{% for place in places[area] %}
 				<div class="place status-{{ place.status }}" id="{{ place.name }}">
 					{% if place.url is defined %}
-					<a class="place-link" href="{{ place.url }}">
+					<a class="place-link" href="{{ place.url }}" title="{{place.happy_hours}}">
 					{% endif %}
 						<h4 class="name">{{ translate(place.name) }}</h4>
 						<span class="status">{{ translate(place.status) }}</span>
 					{% if place.url is defined %}
 					</a>
 					{% endif %}
+					<!--
+					{% if place.happy_hours is defined %}
+					{% for hh in place.happy_hours %}
+						{{ hh }}<br />
+					{% endfor %}
+					{% endif %}
+					-->
 				</div>
 				{% endfor %}
 			</div>

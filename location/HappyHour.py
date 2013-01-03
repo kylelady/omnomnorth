@@ -59,8 +59,8 @@ class HappyHour ():
 					while ehour > 12:
 						ehour -= 12
 
-					start = str(shour) + (':{0}'.format(smin) if smin else '') + stail
-					end   = str(ehour) + (':{0}'.format(emin) if emin else '') + etail
+					start = str(shour) + (':{0:02d}'.format(smin) if smin else '') + stail
+					end   = str(ehour) + (':{0:02d}'.format(emin) if emin else '') + etail
 					hh_s  = '{0} - {1}'.format(start, end)
 
 					self.pretty[i].append(hh_s)
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 	h.insert(4860, 4920)
 	h.insert(3780, 3840)
 	print h.get(datetime.datetime.now())
-	h.insert(4320, 4440)
+	h.insert(4321, 4439)
 	print h.get(datetime.datetime.now())
 	print h.get(datetime.datetime.now())
 
