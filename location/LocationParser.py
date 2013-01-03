@@ -7,12 +7,20 @@ def enum(*sequential, **named):
     return type('Enum', (), enums)
 
 
-details = enum('NAME', 'URL', 'DESC', 'HOURS', 'ADDRESS')
+details = enum('NAME', 'URL', 'DESC', 'HOURS', 'ADDRESS', 'HAPPYHOUR')
 # days of week
 dow = enum('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')
 
 all_days = [dow.MONDAY, dow.TUESDAY, dow.WEDNESDAY, dow.THURSDAY, dow.FRIDAY, dow.SATURDAY, dow.SUNDAY]
 
+detail_categorize = {
+	details.NAME:      ['name'],
+	details.URL:       ['url', 'website'],
+	details.DESC:      ['desc', 'description'],
+	details.HOURS:     ['hours', 'hour'],
+	details.ADDRESS:   ['location', 'loc', 'address', 'addr'],
+	details.HAPPYHOUR: ['happy hour', 'happy hours'],
+}
 
 class LocationParseError(Exception):
 	def __init__ (self, err_str):
@@ -70,18 +78,14 @@ class LocationParser ():
 		f.close()
 
 
+	# Given a category text string, try to match it to a category and return
+	#  the category enum.
 	def get_detail_category (self, s):
 		s = s.strip().lower()
-		if s == 'name':
-			return details.NAME
-		elif s == 'url':
-			return details.URL
-		elif s == 'desc' or s == 'description':
-			return details.DESC
-		elif s == 'hours' or s == 'hour':
-			return details.HOURS
-		elif s == 'location' or s == 'address' or s == 'loc':
-			return details.ADDRESS
+		for det,words in detail_categorize.iteritems():
+			if s in words:
+				return det
+
 		raise LocationParseError('Did not understand "{0}" as a detail type.'.format(s))
 
 
