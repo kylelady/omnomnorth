@@ -313,9 +313,9 @@ class LocationParser ():
 					end = end.replace('am', '').strip()
 					e_hour, e_minute = self.process_hours_minutes(end)
 				elif 'pm' in end:
-					e_hour_offset += 12
 					end = end.replace('pm', '').strip()
 					e_hour, e_minute = self.process_hours_minutes(end)
+					e_hour += 12
 				else:
 					# don't know am or pm, try to figure it out
 					e_hour, e_minute = self.process_hours_minutes(end)
