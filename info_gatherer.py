@@ -35,6 +35,7 @@ class InfoGatherer(object):
             'kroger': places.Kroger(),
             'zoup': places.Zoup(),
             'dominos': places.Dominos(),
+            'songbird': places.Songbird()
         }, 'plymouth': {
             'buschs': places.Buschs(),
             'olgas': places.Olgas(),
