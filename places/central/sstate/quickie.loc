@@ -1,0 +1,8 @@
+name: Quickie Burger
+url: http://www.quickie-burger.com
+
+hours:
+	su-m: 11-midnight
+	tu-w: 11-3am
+	th-sa: 11-4am
+	
