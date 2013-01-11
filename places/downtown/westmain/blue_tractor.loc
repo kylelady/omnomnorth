@@ -6,7 +6,7 @@ hours:
 	su: noon-midnight
 
 happy 		          :
-	  	 		m-tu: 12:01  		pm     -	 midnight
+	  	 		MON -   tuESdaY: 12:01  		pm     -	 midnight
   	     
 
     fri: 5   pm			- 7     pm      	                    
@@ -25,6 +25,8 @@ DESCRIPTION: bar-b-que
 hapPy    	 	 	Hour    :
 
   	    th   :     1 pm  - 8  pm
+
+  	    9pm-10pm
 
 
 
