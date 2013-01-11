@@ -186,7 +186,7 @@ class LocationManager ():
 				for li in locs:
 					status = li.prettyStatus(li.getStatus(datetime.datetime.now()))
 					name   = li.getName()
-					out += '    {0}: {1}\n'.format(name, status)
+					out += '    {0}: {1}\n'.format(name.encode('utf-8'), status)
 
 		return out
 

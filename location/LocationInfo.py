@@ -127,7 +127,7 @@ if __name__ == '__main__':
 	t = LocationInfo()
 	p = LocationParser.LocationParser()
 
-	p.parse('../places/north/oncampus/commons.loc', t)
+	p.parse('../places/central/state/redhawk.loc', t)
 
 	print t
 

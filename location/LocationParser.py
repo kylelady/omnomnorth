@@ -299,6 +299,10 @@ class LocationParser ():
 				if s_hour != 12:
 					# Only apply the pm offset to non twelve hours
 					s_hour += s_hour_offset
+				else:
+					# Determine if it is 12:xx PM or AM.
+					if s_hour_offset == 0:
+						s_hour = 0
 
 			# Process the end time.
 			e_hour_offset = 0
@@ -312,6 +316,15 @@ class LocationParser ():
 				if 'am' in end:
 					end = end.replace('am', '').strip()
 					e_hour, e_minute = self.process_hours_minutes(end)
+					if e_hour == 12:
+						# 12 am was entered this most likely means past midnight
+						# of the next day.
+						if s_hour > 0:
+							e_hour += 12
+						elif s_hour == 0 and s_min < e_min:
+							# This is a very strange case where the open times
+							# are something like 12:15am-12:35am.
+							e_hour = 0
 				elif 'pm' in end:
 					end = end.replace('pm', '').strip()
 					e_hour, e_minute = self.process_hours_minutes(end)
