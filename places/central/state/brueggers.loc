@@ -1,0 +1,7 @@
+name: Bruegger's Bagels
+url: http://www.brueggers.com/locator/view-bakery/35
+address: 709 N University Ave, Ann Arbor, Michigan 48105
+
+hours:
+	m-f: 5:30-7
+	sa-su: 6-5

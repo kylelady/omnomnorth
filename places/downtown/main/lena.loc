@@ -1,0 +1,12 @@
+name: Lena
+url: http://www.lena-annarbor.com/la/index
+address: 226 S. Main, Ann Arbor, MI 48104
+
+happy hour: 
+	m-f:4pm-6pm
+
+hours:
+	m-th: 11-11
+	f-sa: 11-midnight
+	su:   noon-10
+

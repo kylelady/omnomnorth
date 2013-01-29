@@ -1,0 +1,11 @@
+name: Cafe Habana
+url: http://cafehabanas.com/ch/annarbor/remodel.html
+address: 226 South Main, Ann Arbor, MI 48104
+
+happy hours:
+	m-f: 4pm-6pm
+
+hours:
+	m-sa: 4pm-2am
+	su: 5pm-midnight
+
