@@ -1,0 +1,7 @@
+name: Famous Hamburger
+url: http://www.famoushamburger.com/
+
+hours:
+	m-sa: 10-10
+	su: noon-10
+

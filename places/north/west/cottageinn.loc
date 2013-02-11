@@ -1,0 +1,6 @@
+name: Cottage Inn
+
+hours:
+	su-th : 10-midnight
+	f-sa  : 10-1am
+	

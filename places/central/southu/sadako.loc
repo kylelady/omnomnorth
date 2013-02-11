@@ -1,0 +1,8 @@
+name: Sadako
+url: http://www.sadakojapaneserestaurant.com/
+
+hours:
+	m-th: 11-10
+	f-sa: 11-10:30
+	su: noon-9
+

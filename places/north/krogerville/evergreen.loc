@@ -1,0 +1,6 @@
+name: Evergreen
+
+hours:
+	sun-thu: 11-10
+	fri-sat: 11-10:30
+

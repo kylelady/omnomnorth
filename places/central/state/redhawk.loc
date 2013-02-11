@@ -1,0 +1,13 @@
+name: Red Hawk
+url: http://www.redhawkannarbor.com/
+address: 316 S. State Street, Ann Arbor, MI 48104
+
+hours:
+	m-w: 11:30-10
+	th-sat: 11:30-12:30am
+	su: 11:30-9
+
+happy hour:
+	m-f: 3pm-5
+	th-sa: 10pm-midnight
+

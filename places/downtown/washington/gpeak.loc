@@ -1,0 +1,13 @@
+name: Grizzly Peak
+url: http://www.grizzlypeak.net/
+description: Brewpub in Ann Arbor
+address: 120 West Washington, Ann Arbor, MI 48104
+
+hours:
+	mon-thu: 11-11
+	fri: 11-2am
+	sat: 11-midnight
+	sun: noon-11
+
+happy hours:
+	wed: 4pm-5

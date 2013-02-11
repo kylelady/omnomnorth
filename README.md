@@ -7,11 +7,13 @@ Python Dependencies
 -------------------
 
 - Flask
+- Watchdog
 
 Install and Run
 ---------------
 
 	sudo easy_install flask
+	sudo easy_install watchdog
 	./run.py
 
 More Testing

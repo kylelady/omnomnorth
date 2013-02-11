@@ -1,0 +1,12 @@
+name: Ugos
+
+hours:
+	5/1 - 8/31
+	m-th: 8-8
+	f: 8-6
+
+	9/1 - 4/31
+	m-th: 8-1am
+	f: 8-8
+	sa: noon-6
+	su: noon-midnight

@@ -1,0 +1,7 @@
+name: Dominos
+
+hours:
+	m-w: 10-3am
+	th-sa: 10-4am
+	su: 10-2am
+	

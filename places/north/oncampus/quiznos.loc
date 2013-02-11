@@ -1,0 +1,12 @@
+name: Quiznos
+
+hours:
+	5/1-8/31
+	m-f: 10-8
+	sa: 11-7
+	su: noon-7
+
+	9/1 - 4/31
+	m-f: 8-9
+	sa: 10-8
+	su: noon-10

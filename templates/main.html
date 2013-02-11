@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>OmNomNorth!</title>
+	<title>{{ info.title }}</title>
 
 	<link href="/static/the.css" rel="stylesheet" />
 	<link href="/static/skeleton.css" rel="stylesheet" />
@@ -17,6 +17,10 @@
 		<div id="header" class="sixteen columns">
 			<h1>OmNomNorth.net</h1>
 			<h2>Answering the question "What's still open on North Campus?" for {{ info.days }} days.</h2>
+			{% for region in info['regions'] %}
+			<a href="{{ region }}">{{ translate(region) }}</a>
+				{% if not loop.last %} | {% endif %}
+			{% endfor %}
 		</div>
 
 		<div id="content" class="column">
@@ -24,9 +28,22 @@
 			<div class="area" id="{{ area }}">
 				<h3>{{ translate(area) }}</h3>
 				{% for place in places[area] %}
-				<div class="place status-{{ place.status }}" id="{{ place.id }}">
-					<div class="name">{{ translate(place.id) }}</div>
-					<div class="status">{{ translate(place.status) }}</div>
+				<div class="place status-{{ place.status }}" id="{{ place.name }}">
+					{% if place.url is defined %}
+					<a class="place-link" href="{{ place.url }}" title="{{place.happy_hours}}">
+					{% endif %}
+						<h4 class="name">{{ translate(place.name) }}</h4>
+						<span class="status">{{ translate(place.status) }}</span>
+					{% if place.url is defined %}
+					</a>
+					{% endif %}
+					<!--
+					{% if place.happy_hours is defined %}
+					{% for hh in place.happy_hours %}
+						{{ hh }}<br />
+					{% endfor %}
+					{% endif %}
+					-->
 				</div>
 				{% endfor %}
 			</div>

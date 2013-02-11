@@ -1,0 +1,10 @@
+name: Vinology
+address: 110 South Main Street, Ann Arbor, MI 48104
+url: http://www.vinowinebars.net/vinology/
+
+hours:
+	m-th: 11-11
+	fri: 11-midnight
+	sat: 4pm-midnight
+	sun: 4pm-10
+
