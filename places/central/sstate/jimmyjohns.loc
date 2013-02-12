@@ -1,0 +1,7 @@
+name: Jimmy John's
+address: 600 Packard, Ann Arbor, MI 48104
+
+hours:
+	su-w: 10:30-3am
+	th-sa: 10:30-4am
+	

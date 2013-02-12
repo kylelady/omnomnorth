@@ -1,0 +1,9 @@
+name: R.U.B. BBQ
+url: http://rubbbqdetroit.com/
+address: 640 Packard, Ann Arbor, MI 48104
+
+hours:
+	m-sa: 11-midnight
+	su: noon-11
+
+happy hour: 4pm-7pm and 11pm-1am
