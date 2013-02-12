@@ -6,3 +6,7 @@ hours:
 	su-we: 11-11
 	th-sa: 11-midnight
 
+happy hour:
+	su-we: 4pm-6pm and 10pm-11pm
+	th:    4pm-6pm and 11pm-midnight
+	f-sa:  11pm-midnight
