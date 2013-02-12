@@ -1,0 +1,8 @@
+name: Subway
+address: 902 South State St., Ann Arbor, MI 48104
+
+hours:
+	su: 8-midnight
+	m-w: 7-midnight
+	th-fr: 7-3am
+	sa: 8-3am
