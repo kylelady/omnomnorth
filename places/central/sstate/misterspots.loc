@@ -5,4 +5,4 @@ address: 808 South State Street, Ann Arbor, MI 48104
 hours:
 	m-th: 10:30-midnight
 	f-sa: 10:30-1am
-	s: noon-midnight
+	su: noon-midnight
