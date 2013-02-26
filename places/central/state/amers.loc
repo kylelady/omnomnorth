@@ -1,6 +1,8 @@
 name: Amer's
 
 hours:
-	m-f: 7-midnight
-	sa-su: 8-midnight
+	m-th: 7-11
+	f: 7-midnight
+	sa: 8-midnight
+	su: 8-11
 
