@@ -1,6 +1,6 @@
 name: Kuroshio
 url: http://kuroshiorestaurant.com
 hours:
-	m-w: 4pm-10
-	th-sa: 4pm-11
-	su: 4pm - 9
+	m, w: 11:30-10
+	th-sa: 11:30-1am
+	su: noon - 9
