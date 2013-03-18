@@ -1,0 +1,14 @@
+name: Café Felix
+url: http://www.cafefelix.com/
+address: 204 S. Main St. Ann Arbor, MI 48104
+
+hours:
+	m-th: 11-midnight
+	f: 11-1am
+	sa: 9-1am
+	su: 9-10
+
+happy hour:
+	m,w: 3pm-6pm and 7pm-11pm
+	tu,th,f: 3pm-6pm
+
