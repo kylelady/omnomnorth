@@ -1,0 +1,8 @@
+name: Heidelberg
+address: 215 N. Main Ann Arbor, MI 48104
+url: http://www.heidelbergannarbor.com/
+
+hours:
+	m-sa: 11-2am
+	su: 3pm-2am
+

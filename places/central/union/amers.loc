@@ -1,0 +1,12 @@
+name: Amer's
+
+hours:
+	8/1 - 4/31
+	m-th: 7-midnight
+	f-sa: 7-10
+	su: 9-midnight
+
+	5/1 - 7/31
+	m-sa: 7-9
+	su: 9-7
+
