@@ -1,0 +1,13 @@
+name: Mani Osteria
+url: http://maniosteria.com/
+address: 341 E. Liberty, Ann Arbor, MI 48104
+
+hours:
+	tu-th: 11:30-10
+	f: 11:30-11
+	sa: 4pm-11pm
+	su: 4pm-9pm
+
+happy hours:
+	tu-fr: 4pm-6pm
+
