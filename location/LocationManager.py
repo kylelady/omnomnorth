@@ -4,6 +4,7 @@
 import datetime
 import os
 import time
+from operator import attrgetter
 
 import LocationInfo
 import LocationParser
@@ -169,7 +170,7 @@ class LocationManager ():
 
 		for group,locs in sorted(self.locations[region].iteritems()):
 			out[group] = []
-			for li in locs:
+			for li in sorted(locs, key=attrgetter('name')):
 				out[group].append(li.getInfo(now))
 
 		return out
