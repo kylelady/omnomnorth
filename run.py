@@ -37,7 +37,11 @@ def home():
     return site('north')
 
 @app.route('/<region>', methods=['GET', ])
-def site(region):
+def just_region (region):
+    return site(region, None)
+
+@app.route('/<region>/<loc_filter>', methods=['GET', ])
+def site(region, loc_filter):
     if 'lang' in request.args and request.args['lang'] in lang:
         selected_lang = request.args['lang']
     elif 'lang' in request.cookies and request.cookies['lang'] in lang:
@@ -48,7 +52,7 @@ def site(region):
     if region == '' or region not in lm.getRegions():
         region = 'north'
 
-    status = lm.getStatuses(region)
+    status = lm.getStatuses(region, loc_filter)
     trans = make_translator(lang[selected_lang], lang['en'])
 
     title = 'OmNom{0}!'.format(region.title())
