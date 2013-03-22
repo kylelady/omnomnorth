@@ -189,6 +189,8 @@ class LocationManager ():
 		return self.group_order[region]
 
 	def parse_location_filter (self, loc_filter):
+		if loc_filter is None:
+			return None
 		if loc_filter.lower() == 'open':
 			return filters.OPEN;
 		elif loc_filter.lower() == 'happyhour':
