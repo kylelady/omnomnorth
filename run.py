@@ -29,13 +29,13 @@ def gen_info(region):
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
     info['regions'] = lm.getRegions()
-    info['filters'] = ['a', 'b']
+    info['filters'] = lm.getFilters()
     info['area_order'] = lm.getGroupOrder(region)
     return info
 
 @app.route('/', methods=['GET', ])
 def home():
-    return site('north')
+    return site('north', None)
 
 @app.route('/<region>', methods=['GET', ])
 def just_region (region):
@@ -60,6 +60,8 @@ def site(region, loc_filter):
 
     info = gen_info(region)
     info['title'] = title
+    info['region'] = region
+    info['filter'] = loc_filter
 
     try:
         with open('analytics.txt') as f:
