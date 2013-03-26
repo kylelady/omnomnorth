@@ -19,6 +19,7 @@ def enum(*sequential, **named):
     return type('Enum', (), enums)
 
 filters = enum('OPEN', 'HAPPYHOUR')
+filterNames = ['open', 'happyhour']
 
 class PlaceWatcher (FileSystemEventHandler):
 	lm = None
@@ -187,6 +188,9 @@ class LocationManager ():
 	def getGroupOrder (self, region):
 		region = region.strip().lower()
 		return self.group_order[region]
+
+	def getFilters (self):
+		return filterNames
 
 	def parse_location_filter (self, loc_filter):
 		if loc_filter is None:
