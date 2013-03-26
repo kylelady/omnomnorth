@@ -29,6 +29,7 @@ def gen_info(region):
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
     info['regions'] = lm.getRegions()
+    info['filters'] = ['a', 'b']
     info['area_order'] = lm.getGroupOrder(region)
     return info
 
