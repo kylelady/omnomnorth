@@ -21,7 +21,11 @@
 			<div class="centeredmenu regions">
 				<ul>
 					{% for region in info['regions'] %}
-					<li><a href="/{{ region }}">{{ translate(region) }}</a></li>
+					<li><a href="/{{ region }}"
+						{% if region == info['region'] %}
+						class='active'
+						{% endif %}>
+						{{ translate(region) }}</a></li>
 					{% endfor %}
 				</ul>
 			</div>
@@ -29,7 +33,11 @@
 			<div class="centeredmenu filters">
 				<ul>
 					{% for filter in info['filters'] %}
-					<li><a href="/{{ filter }}">{{ translate(filter) }}</a></li>
+					<li><a href="/{{ info['region'] }}/{{ filter }}"
+						{% if filter == info['filter'] %}
+						class='active'
+						{% endif %}>
+						{{ translate(filter) }}</a></li>
 					{% endfor %}
 				</ul>
 			</div>

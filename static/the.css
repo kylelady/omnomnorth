@@ -63,8 +63,8 @@ div#footer{clear:both;}
 }
 .centeredmenu ul li a.active,
 .centeredmenu ul li a.active:hover {
-   color:#000;
-   background:#FFEA78;
+   color:#fff;
+   background:green;
    font-weight:bold;
 }
 
