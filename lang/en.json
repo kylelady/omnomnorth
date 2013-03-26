@@ -22,6 +22,8 @@
 	"0" : "Open",
 	"1" : "Opening Soon!",
 	"2" : "Closed",
-	"3" : "Closing Soon!"
+	"3" : "Closing Soon!",
+	"open" : "Open",
+	"happyhour" : "Happy Hour"
 }
 
