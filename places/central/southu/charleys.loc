@@ -2,3 +2,7 @@ name: Charley's
 url: http://www.good-time-charleys.com/
 
 hours: 11-2am
+
+happy:
+	m-f: 2:30pm-6pm
+	su: 11-2am

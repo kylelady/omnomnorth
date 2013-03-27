@@ -1,0 +1,11 @@
+name: Aut Bar
+url: http://autbar.com
+address: 315 Braun Ct, Ann Arbor, MI
+
+hours:
+	m-f: 4pm-2am
+	sa: 11am-2am
+	su: 10am-2am
+
+happy hour:
+	m-f: 4pm-6pm
