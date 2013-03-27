@@ -1,32 +1,12 @@
 name: Blue Tractor
 url: http://www.bluetractor.net/bta/a2/index
-addr: fjdlas
+addr: 207 E Washington St, Ann Arbor, MI
 hours:
 	mo-sa: 11-2am
 	su: noon-midnight
 
-happy 		          :
-	  	 		MON -   tuESdaY: 12:01  		pm     -	 midnight
-  	     
-
-    fri: 5   pm			- 7     pm      	                    
-
-
-    		w       :       6pm-        7pm
-
-
-     	  saturday    ,    su: 8      -       9
-
-     	  
-
 DESCRIPTION: bar-b-que
 
-
-hapPy    	 	 	Hour    :
-
-  	    th   :     1 pm  - 8  pm
-
-  	    9pm-10pm
-
-
+happy hour:
+	m-f: 3pm-6pm and 10pm-1am
 

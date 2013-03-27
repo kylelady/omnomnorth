@@ -1,0 +1,13 @@
+name: Arbor Brewing
+url: http://www.arborbrewing.com/
+address: 114 E Washington Street, Ann Arbor, MI 48104
+
+hours:
+	m-sa: 11:30-1am
+	su: 11-midnight
+
+happy hour:
+	m: 11:30-1am
+	tu-f: 4pm-6pm
+	su: 8pm-midnight
+

@@ -1,0 +1,12 @@
+name: Grange
+url: http://www.grangekitchenandbar.com
+address: 118 W. Libery, Ann Arbor, MI
+
+hours:
+	m-th: 5pm-10pm
+	f-sa: 5pm-11pm
+	su: 10-3pm
+
+happy:
+	m-f: 5pm-7pm
+	sa: 10pm-11pm
