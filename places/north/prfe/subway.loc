@@ -1,6 +1,6 @@
 name: Subway
 
 hours:
-	m-f: 8-11
+	m-f: 8-10
 	sa: 8-10
 	su: 9-9

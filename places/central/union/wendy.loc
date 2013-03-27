@@ -1,0 +1,13 @@
+name: Wendy's
+
+hours:
+	8/1 - 4/31
+	m-f: 7-midnight
+	sa: 10:30-midnight
+	su: 11-midnight
+
+	5/1 - 7/31
+	m-f: 7-10
+	sa: 10:30-10
+	su: 11-10
+

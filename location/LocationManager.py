@@ -11,6 +11,8 @@ import LocationParser
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+from utils import timezones
+
 class PlaceWatcher (FileSystemEventHandler):
 	lm = None
 
@@ -163,7 +165,7 @@ class LocationManager ():
 			return None
 
 		out = {}
-		now = datetime.datetime.now()
+		now = datetime.datetime.now(timezones.Eastern)
 
 		for group,locs in sorted(self.locations[region].iteritems()):
 			out[group] = []
