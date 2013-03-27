@@ -11,6 +11,8 @@ def enum(*sequential, **named):
 State = enum('OPEN', 'OPENING_SOON', 'CLOSED', 'CLOSING_SOON')
 StateNames = ['OPEN', 'OPENING_SOON', 'CLOSED', 'CLOSING_SOON']
 
+filters = enum('OPEN', 'HAPPYHOUR')
+
 class LocationInfo ():
 	name       = ''
 	url        = ''
@@ -73,6 +75,19 @@ class LocationInfo ():
 		return hhours
 
 	"""
+	returns TRUE if the place is currently having happy hour.
+	"""
+	def isHappyHour (self, dt):
+		if self.name[0:3] != "Caf":
+			return False
+		min_offset = (dt.hour*60) + dt.minute
+		for date_range,hours in self.happyhours.iteritems():
+			if date_range.in_range(dt.month, dt.day):
+				if hours.isHappyHour(dt.weekday(), min_offset):
+					return True
+		return False
+
+	"""
 	dt: datetime.now()
 	returns: State enum
 	"""
@@ -110,6 +125,13 @@ class LocationInfo ():
 
 	def getName (self):
 		return self.name
+
+	def matchesFilter (self, dt, loc_filter):
+		if (loc_filter == filters.OPEN):
+			return self.getStatus(dt) == State.OPEN
+		elif (loc_filter == filters.HAPPYHOUR):
+			return self.isHappyHour(dt)
+		return FALSE
 
 	def __str__ (self):
 		out = 'Name: {0}\n'.format(self.name)

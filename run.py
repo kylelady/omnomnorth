@@ -29,15 +29,20 @@ def gen_info(region):
     start = datetime.date(2012, 06, 2)
     info['days'] = (datetime.date.today() - start).days
     info['regions'] = lm.getRegions()
+    info['filters'] = lm.getFilters()
     info['area_order'] = lm.getGroupOrder(region)
     return info
 
 @app.route('/', methods=['GET', ])
 def home():
-    return site('north')
+    return site('north', None)
 
 @app.route('/<region>', methods=['GET', ])
-def site(region):
+def just_region (region):
+    return site(region, None)
+
+@app.route('/<region>/<loc_filter>', methods=['GET', ])
+def site(region, loc_filter):
     if 'lang' in request.args and request.args['lang'] in lang:
         selected_lang = request.args['lang']
     elif 'lang' in request.cookies and request.cookies['lang'] in lang:
@@ -48,13 +53,15 @@ def site(region):
     if region == '' or region not in lm.getRegions():
         region = 'north'
 
-    status = lm.getStatuses(region)
+    status = lm.getStatuses(region, loc_filter)
     trans = make_translator(lang[selected_lang], lang['en'])
 
     title = 'OmNom{0}!'.format(region.title())
 
     info = gen_info(region)
     info['title'] = title
+    info['region'] = region
+    info['filter'] = loc_filter
 
     try:
         with open('analytics.txt') as f:
