@@ -4,6 +4,7 @@
 import datetime
 import os
 import time
+from operator import attrgetter
 
 import LocationInfo
 import LocationParser
@@ -12,6 +13,13 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 from utils import timezones
+
+def enum(*sequential, **named):
+    enums = dict(zip(sequential, range(len(sequential))), **named)
+    return type('Enum', (), enums)
+
+filters = enum('OPEN', 'HAPPYHOUR')
+filterNames = ['open', 'happyhour']
 
 class PlaceWatcher (FileSystemEventHandler):
 	lm = None
@@ -159,24 +167,39 @@ class LocationManager ():
 	def getRegions (self):
 		return self.locations.keys()
 
-	def getStatuses (self, region):
+	def getStatuses (self, region, loc_filter):
 		region = region.strip().lower()
 		if region not in self.locations:
 			return None
+
+		loc_f = self.parse_location_filter(loc_filter)
 
 		out = {}
 		now = datetime.datetime.now(timezones.Eastern)
 
 		for group,locs in sorted(self.locations[region].iteritems()):
 			out[group] = []
-			for li in locs:
-				out[group].append(li.getInfo(now))
+			for li in sorted(locs, key=attrgetter('name')):
+				if loc_f == None or li.matchesFilter(dt=now, loc_filter=loc_f):
+					out[group].append(li.getInfo(now))
 
 		return out
 
 	def getGroupOrder (self, region):
 		region = region.strip().lower()
 		return self.group_order[region]
+
+	def getFilters (self):
+		return filterNames
+
+	def parse_location_filter (self, loc_filter):
+		if loc_filter is None:
+			return None
+		if loc_filter.lower() == 'open':
+			return filters.OPEN;
+		elif loc_filter.lower() == 'happyhour':
+			return filters.HAPPYHOUR;
+		return None
 
 	def __str__ (self):
 		out = ''
@@ -186,7 +209,8 @@ class LocationManager ():
 				locs = self.locations[region][group]
 				out += '  {0}\n'.format(group)
 				for li in locs:
-					status = li.prettyStatus(li.getStatus(datetime.datetime.now()))
+					now = datetime.datetime.now()
+					status = li.prettyStatus(li.getStatus(now))
 					name   = li.getName()
 					out += '    {0}: {1}\n'.format(name.encode('utf-8'), status)
 

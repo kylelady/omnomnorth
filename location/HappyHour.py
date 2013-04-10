@@ -52,7 +52,7 @@ class HappyHour ():
 
 					ehour = h[1] / 60
 					emin  = h[1] - (ehour * 60)
-					if ehour < 12 or ehour >= 24:
+					if ehour < 12 or 	ehour >= 24:
 						etail = 'am'
 					else:
 						etail = 'pm'
@@ -74,6 +74,15 @@ class HappyHour ():
 
 		return self.pretty[day]
 
+	"""
+	Returns True if this HappyHour object is currently in a happy hour state.
+	"""
+	def isHappyHour (self, weekday, min_offset):
+		for h in self.hours[weekday]:
+			print "{0} {1} {2}".format(h[0], h[1], min_offset)
+			if h[0] <= min_offset and h[1] > min_offset:
+				return True
+		return False
 
 
 if __name__ == '__main__':

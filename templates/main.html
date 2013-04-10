@@ -17,10 +17,31 @@
 		<div id="header" class="sixteen columns">
 			<h1>OmNomNorth.net</h1>
 			<h2>Answering the question "What's still open on North Campus?" for {{ info.days }} days.</h2>
-			{% for region in info['regions'] %}
-			<a href="{{ region }}">{{ translate(region) }}</a>
-				{% if not loop.last %} | {% endif %}
-			{% endfor %}
+
+			<div class="centeredmenu regions">
+				<ul>
+					{% for region in info['regions'] %}
+					<li><a href="/{{ region }}"
+						{% if region == info['region'] %}
+						class='active'
+						{% endif %}>
+						{{ translate(region) }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="centeredmenu filters">
+				<ul>
+					{% for filter in info['filters'] %}
+					<li><a href="/{{ info['region'] }}/{{ filter }}"
+						{% if filter == info['filter'] %}
+						class='active'
+						{% endif %}>
+						{{ translate(filter) }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+
 		</div>
 
 		<div id="content" class="column">
