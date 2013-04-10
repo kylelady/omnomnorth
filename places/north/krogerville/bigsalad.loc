@@ -1,0 +1,8 @@
+name: The Big Salad
+address: 2793 Plymouth Rd, Ann Arbor, MI, 48105
+url: http://www.thebigsalad.net
+
+hours:
+	m-sa: 10:30 - 9
+	su: 11-4
+
