@@ -21,6 +21,71 @@ div#footer a{display:inline;padding:0;color: #C6D5FD}
 div#page-border{width:75%; background:white; margin:0 auto}
 div#footer{clear:both;}
 
+
+.centeredmenu {
+   float:left;
+   width:100%;
+   /*border-bottom:4px solid #000;*/
+   overflow:hidden;
+   position:relative;
+}
+.centeredmenu ul {
+   clear:left;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   left:50%;
+   text-align:center;
+}
+.centeredmenu ul li {
+   display:block;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   right:50%;
+}
+.centeredmenu ul li a {
+   display:block;
+   margin:0 0 0 0px;
+   padding:8px 10px;
+   color:#fff;
+   text-decoration:none;
+   line-height:1.3em;
+   font-size: 1.2em;
+}
+.centeredmenu ul li a:hover {
+   background:green;
+   color:#fff;
+}
+.centeredmenu ul li a.active,
+.centeredmenu ul li a.active:hover {
+   color:#fff;
+   background:green;
+   font-weight:bold;
+}
+
+.regions {
+	background-color: #d77029;
+}
+
+.regions ul li a {
+	background-color: #d77029;
+}
+
+.filters {
+	background-color: #d78349;
+}
+
+.filters ul li a {
+	background-color: #d78349;
+}
+
+
+
 div.area {width:95%; background:#F2F2F2; padding: 1em 0em; margin-top:1em; display:inline-block}
 div.area h3{color:#333333}
 .place {
