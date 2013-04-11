@@ -1,0 +1,6 @@
+name: Starbucks
+address: 2641 Plymouth Rd, Ann Arbor, MI 48105
+
+hours:
+	m-f: 6-8
+	sa-su: 7-8

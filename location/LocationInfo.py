@@ -78,8 +78,6 @@ class LocationInfo ():
 	returns TRUE if the place is currently having happy hour.
 	"""
 	def isHappyHour (self, dt):
-		if self.name[0:3] != "Caf":
-			return False
 		min_offset = (dt.hour*60) + dt.minute
 		for date_range,hours in self.happyhours.iteritems():
 			if date_range.in_range(dt.month, dt.day):

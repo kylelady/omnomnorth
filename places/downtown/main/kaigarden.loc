@@ -1,0 +1,8 @@
+name: Kai Garden
+address: 116 S Main St, Ann Arbor, MI 48104
+
+hours:
+	m-th: 11-10
+	f-sa: 11-11
+	su: noon-10
+

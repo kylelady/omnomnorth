@@ -1,0 +1,10 @@
+name: Cupcake Station
+url: http://www.cupcakestation.com
+address: 116 E. Liberty St. Ann Arbor, MI 48104
+
+hours:
+	3/1-5/31
+	su: 11-8
+	m-th: 10-9
+	f-sa: 10-11
+

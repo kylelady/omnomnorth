@@ -1,0 +1,9 @@
+name: Oasis Grill
+address: 1106 South University St. Ann Arbor, MI 48103
+url: http://theoasisgrill.com
+
+hours:
+	m-f: 10:30-9
+	sa-su: 11:30-8:30
+
+

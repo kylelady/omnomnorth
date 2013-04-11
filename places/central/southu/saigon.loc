@@ -1,0 +1,10 @@
+name: Saigon Garden
+address: 1220 S University Ann Arbor, MI 48104
+url: http://www.saigongardenannarbor.com/
+
+hours:
+	m-th: 11-10
+	f: 11-11
+	sa: 11:30-11
+	su: 11:30-10
+

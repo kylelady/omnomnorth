@@ -1,0 +1,20 @@
+name: Bill's Beer Garden
+address: 218 S. Ashley, Ann Arbor, MI 48104
+url: http://billsbeergarden.com
+
+hours:
+	4/5-4/7
+	f-su: 5pm-11pm
+
+	5/1-6/31
+	th-su: 7pm-11pm
+
+	7/4-9/30
+	tu-sa: 5pm-11pm
+	su: 4pm-9pm
+
+	10/1-12/15
+	th-sa: 5pm-11pm
+	su: 4pm-9pm
+
+

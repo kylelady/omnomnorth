@@ -1,0 +1,9 @@
+name: Miki
+address: 106 S. First, Ann Arbor, MI 48104
+url: http://www.sushizenusa.com/
+
+hours:
+	m-f: 11:30am-2:30pm and 4:30pm-10pm
+	sa: 11:30am-10pm
+	su: 3pm-10pm
+
