@@ -1,0 +1,8 @@
+name: Sushi Town
+address: 740 Packard St. Ann Arbor, MI 48104
+url: http://www.sushitown.org/
+
+hours:
+	m-f: noon-11
+	sa: 3pm-11
+
