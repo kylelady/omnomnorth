@@ -1,0 +1,8 @@
+name: NYPD
+url: http://www.newyorkpizzaannarbor.com
+address: 605 East Williams Ann Arbor, MI 48104
+
+hours:
+	m-sa: 10-4am
+	su: 11-4am
+

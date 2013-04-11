@@ -1,0 +1,10 @@
+name: Jamaican Jerk Pit
+url: http://www.jamaicanjerkpit.com/
+address: 314 South Thayer Ann Arbor, MI 48104
+
+hours:
+	m-th: 11:30-9:30
+	f: 11:30-10
+	sa: noon-10
+	su: noon-8
+

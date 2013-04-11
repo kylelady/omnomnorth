@@ -1,0 +1,9 @@
+name: Ahmo's
+url: http://www.ahmosdeli.com
+address: 341 E. Huron Street Ann Arbor, MI 48104
+
+hours:
+	m-f: 9-10
+	sa: 10-10
+	su: 10-9
+

@@ -2,6 +2,7 @@ state
 southu
 union
 league
+campus
 sstate
 med
 

@@ -1,0 +1,10 @@
+name: Madras Masala
+url: http://www.madrasmasala.com/
+address: 328 Maynard Street, Ann Arbor, Michigan
+
+hours:
+	m-th: 11:30-3 and 5pm-10pm
+	f: 11:30-3 and 5pm-10:30pm
+	sa: noon-3:30 and 5pm-10:30pm
+	su: noon-3:30 and 5pm-9:30pm
+
