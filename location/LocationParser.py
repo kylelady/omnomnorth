@@ -26,7 +26,7 @@ class LocationParseError(Exception):
 	def __init__ (self, err_str):
 		self.err_str = err_str
 	def __str__ (self):
-		return self.err_str	
+		return self.err_str
 
 
 class LocationParser ():
@@ -221,7 +221,7 @@ class LocationParser ():
 		elif ',' in day:
 			# day was specified as a comma separted list
 			return self.process_day_list(day)
-		
+
 		return self.process_day_single(day)
 
 	def process_day_single (self, day):
@@ -234,13 +234,13 @@ class LocationParser ():
 			return dow.WEDNESDAY
 		elif day == 'th' or day == 'thu' or day == 'thursday':
 			return dow.THURSDAY
-		elif day == 'f' or day == 'fri' or day == 'friday':
+		elif day == 'f' or day == 'fr' or day == 'fri' or day == 'friday':
 			return dow.FRIDAY
-		elif day == 'sa' or day == 'fr' or day == 'sat' or day == 'saturday':
+		elif day == 'sa' or day == 'sat' or day == 'saturday':
 			return dow.SATURDAY
 		elif day == 'su' or day == 'sun' or day == 'sunday':
 			return dow.SUNDAY
-		
+
 		raise LocationParseError('Unable to parse "{0}" as day.'.format(day))
 
 
@@ -336,7 +336,7 @@ class LocationParser ():
 					e_hour += 12
 
 			# Extra logic to handle chains of open times. That is, if a place is
-			#  open from 11am-2pm and 5-9, then obviously the 5-9 corresponds to 
+			#  open from 11am-2pm and 5-9, then obviously the 5-9 corresponds to
 			#  5pm-9pm and not 5am-9pm. This fixes that.
 			if len(out_ranges) > 0:
 				# this is a multirange time for this day
