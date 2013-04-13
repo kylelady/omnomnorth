@@ -114,7 +114,7 @@ class LocationInfo ():
 				return State.OPEN
 		elif open_soon:
 			return State.OPENING_SOON
-		
+
 		return State.CLOSED
 
 
@@ -126,7 +126,9 @@ class LocationInfo ():
 
 	def matchesFilter (self, dt, loc_filter):
 		if (loc_filter == filters.OPEN):
-			return self.getStatus(dt) == State.OPEN
+			matches = self.getStatus(dt) == State.OPEN or \
+			          self.getStatus(dt) == State.CLOSING_SOON
+			return matches
 		elif (loc_filter == filters.HAPPYHOUR):
 			return self.isHappyHour(dt)
 		return FALSE
