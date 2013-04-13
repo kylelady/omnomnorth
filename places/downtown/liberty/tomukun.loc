@@ -3,4 +3,8 @@ url: http://www.tomukun.com/
 
 hours:
 	su-th: 11:30-10
-	fr-sa: 10:30-2am
+	fr-sa: 11:30-2am
+
+happy hour:
+	3pm-6pm
+	f-sa: 10pm-midnight
