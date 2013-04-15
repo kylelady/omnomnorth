@@ -1,0 +1,11 @@
+name: Chop House
+url: http://msventures.com/thechophouse_web/pages/ann_arbor/chop_ann.html
+address: 322 S. Main Street, Ann Arbor, MI 48104
+
+hours:
+	m-th: 5pm-10pm
+	f-sa: 5pm-11pm
+	su: 4pm-9pm
+
+happy hour: 5pm-7pm
+
