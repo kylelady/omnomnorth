@@ -1,0 +1,8 @@
+name: Smoothie King
+address: 222 N Fourth, Ann Arbor, MI 48104
+url: http://www.smoothieking.com/stores/store.php/555
+
+hours:
+	m-sa: 9-9
+	su: 11-7
+

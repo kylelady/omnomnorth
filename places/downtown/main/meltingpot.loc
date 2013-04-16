@@ -1,0 +1,15 @@
+name: Melting Pot
+url: http://www.meltingpot.com/annarbor-mi/welcome
+address: 309 S. Main Street, Ann Arbor, MI 48104
+
+hours:
+	m-th: 4pm-10pm
+	f: 4pm-11pm
+	sa: noon-11
+	su: noon-9
+
+happy hour:
+	m-th: 4pm-7pm and 9pm-10pm
+	f: 4pm-7pm and 9pm-11pm
+	su: noon-9
+
