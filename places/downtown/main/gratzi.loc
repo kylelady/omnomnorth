@@ -1,0 +1,12 @@
+name: Gratzi
+address: 326 S. Main Street, Ann Arbor, MI 48104
+url: http://www.msventures.com/gratzi/pages/location.html
+
+hours:
+	m-th: 11:30-10
+	f-sa: 11:30-11
+	su: 4pm-9pm
+
+happy hour:
+	m-f: 3pm-6pm
+

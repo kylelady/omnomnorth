@@ -1,0 +1,8 @@
+name: Siam Cuisine
+address: 313 Braun Ct., Ann Arbor, MI 48104
+url: http://www.siam-cuisine.com/
+
+hours:
+	m-th: 11-9
+	f-sa: 11-9:30
+

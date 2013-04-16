@@ -1,0 +1,10 @@
+name: Gandy Dancer
+address: 401 Depot, Ann Arbor, MI 48104
+url: http://www.muer.com/gandy-dancer/index.asp
+
+hours:
+	m-th: 11-10
+	f: 11-11
+	sa: 4:30pm-11
+	su: 10-9
+

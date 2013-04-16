@@ -1,0 +1,9 @@
+name: Happy's Pizza
+url: http://www.happyspizza.com/hp_loc_annarbor.php
+address: 600 S Main, Ann Arbor, MI 48104
+
+hours:
+	su: noon-midnight
+	m-w: 10-midnight
+	th-sa: 10-4am
+
