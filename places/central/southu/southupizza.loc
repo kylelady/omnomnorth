@@ -1,0 +1,8 @@
+name: South U Pizza
+address: 1104 S. University, Ann Arbor, MI 48104
+
+hours:
+	su: noon-3am
+	m-fr: 11-3am
+	sa: 11-midnight
+

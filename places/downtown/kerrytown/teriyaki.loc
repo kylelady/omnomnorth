@@ -1,0 +1,7 @@
+name: Teriyaki Time
+address: 314 Detroit St, Ann Arbor, MI 48104
+
+hours:
+	m-sa: 10-9
+	su: 11-9
+

@@ -1,0 +1,9 @@
+name: Monahan's Seafood
+address: 415 N. Fifth Ave - 1st Floor, Ann Arbor, MI 48104
+url: http://www.kerrytown.com/monahans/index.html
+
+hours:
+	m-f: 8-7
+	sa: 7-5
+	su: 10-5
+
