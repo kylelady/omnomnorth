@@ -144,7 +144,7 @@ class LocationManager ():
 					self.locations[region][group].append(li)
 				except LocationParser.LocationParseError as e:
 					# Some error in this config file
-					print e
+					print("{0}/{1}: {2}".format(group_path, gf, e))
 
 	def parseOrder (self, order_path):
 		path = order_path.replace(self.directory, '')
