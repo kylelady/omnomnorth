@@ -1,0 +1,10 @@
+name: Vellum
+address: 209 South Main Street Ann Arbor, Michigan 48104
+url: http://vellumrestaurant.com
+
+hours:
+	su-th: 5:30pm-11
+	f-sa: 5:30pm-1am
+
+happy hour:
+	su-fr: 5pm-7pm
