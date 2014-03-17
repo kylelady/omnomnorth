@@ -11,5 +11,6 @@ hours:
 
 happy hours:
 	m-f: 4pm-6pm
-	m-th, su: 11pm-midnight
+	m-th: 11pm-midnight
+	su: 11pm-midnight
 	f-sa: 11pm-2am
