@@ -1,0 +1,10 @@
+name: Knight's
+address: 600 East Liberty Street, Ann Arbor, Michigan 48104
+url: http://www.knightsrestaurants.com/downtownsteakhouse.html
+
+hours:
+    m-sa: 11-midnight
+    su: 11-11
+
+happy hour:
+    m-th: 3pm-6pm
