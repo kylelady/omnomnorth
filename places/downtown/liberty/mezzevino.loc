@@ -1,0 +1,11 @@
+name: Mezzevino
+address: 120 E Liberty St, Ann Arbor, MI 48104
+url: http://mezzevino.com/
+
+hours:
+    m-th: 4pm-11pm
+    fr-sa: 4pm-midnight
+    su: 4pm-10pm
+
+happy hour:
+    su-sa: 4pm-7pm
