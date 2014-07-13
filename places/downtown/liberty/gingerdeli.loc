@@ -1,0 +1,11 @@
+name: Ginger Deli
+url: http://www.gingerdeli.com
+address: 303 South Division Street, Ann Arbor, MI 48104
+
+hours:
+  m-tu: 11 - 4
+  w: 8 - 4
+  th: 11 - 4
+  f: 8 - 4
+  sa: 11 - 4
+  su: 12 - 3
