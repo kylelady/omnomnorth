@@ -1,0 +1,8 @@
+name: Vin Bar
+url: http://vinbara2.com
+address: 111 W. Liberty, Ann Arbor, MI 48104
+
+hours:
+	tu-th: 3-10
+	fr-sa: 3-midnight
+	su: 3-10
