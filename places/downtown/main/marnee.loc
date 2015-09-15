@@ -1,0 +1,10 @@
+name: Marnee Thai
+url: http://www.marneethai-restaurant.com
+address: 414 S. Main St. Ann Arbor, MI 48104
+
+hours:
+	m-sa: 11:30-2, 5-9:15
+	su: 4-9:15
+	
+happy hour:
+	m-fr: 5-6:30
