@@ -197,32 +197,22 @@ class LocationParser ():
 		return days_in_range
 
 
-	def process_day_list (self, s):
-		days_in_list = []
-
-		dlist = s.split(',')
-
-		for d in dlist:
+	def process_day (self, day):
+		days = []
+		for elem in day.split(','):
 			try:
-				day = self.process_day_single(d)
-				days_in_list.append(day)
+				if '-' in elem:
+					days.extend(self.process_day_range(elem))
+				else:
+					days.append(self.process_day_single(elem))
 			except LocationParseError:
 				# if bad day, just skip it
 				pass
-
-		return days_in_list
-
-
-	# returns base minute offset
-	def process_day (self, day):
-		if '-' in day:
-			# day was specified as range
-			return self.process_day_range(day)
-		elif ',' in day:
-			# day was specified as a comma separted list
-			return self.process_day_list(day)
-
-		return self.process_day_single(day)
+		if not len(days):
+			# The old day processing code threw an exception if there were no
+			# valid days, so we need to emulate that behavior
+			raise LocationParseError('No days (this should be caught)')
+		return days
 
 	def process_day_single (self, day):
 		day = day.strip().lower()
