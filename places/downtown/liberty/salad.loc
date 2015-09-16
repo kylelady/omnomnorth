@@ -2,5 +2,5 @@ name: Salad's UP
 url: http://www.saladsup.com/
 
 hours:
-  m-sa: 11-10
-  su: noon-9
+	m-sa: 11-10
+	su: noon-9

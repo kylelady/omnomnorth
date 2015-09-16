@@ -2,5 +2,5 @@ name: Mezes Greek Grill
 url: http://mezesgrill.com/
 
 hours:
-  m-sa: 11-9:30
-  su: noon-8:30
+	m-sa: 11-9:30
+	su: noon-8:30
