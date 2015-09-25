@@ -1,0 +1,8 @@
+name: Beer Grotto
+url: http://beergrotto.com
+address: 303 S Ashley St Ann Arbor, MI 48104
+
+hours:
+	su-wed: noon-midnight
+	th: noon-2am
+	f-sa: 11-2am
