@@ -1,0 +1,11 @@
+name: Real Seafood Company
+url: http://realseafoodannarbor.com
+address: 341 S. Main St. Ann Arbor, MI 48104
+
+hours:
+	m-th: 11:30-10
+	f-sa: 11:30-11
+	su: 1pm-9
+
+happy hour:
+	m-fr: 3-7

@@ -1,0 +1,13 @@
+name: Sabor Latino
+url: http://annarborsabor.com
+address: 211 N. Main St. Ann Arbor, MI 48104
+
+hours:
+	m: 11-9
+	tu: 11-11
+	w-th: 11-9
+	fr-sa: 11-11
+	su: 11-9
+
+happy hour:
+	su-sa: 3:50-6:50

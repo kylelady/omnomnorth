@@ -1,0 +1,13 @@
+name: Prickly Pear
+url: http://www.pricklypearcafe.com/
+address: 328 S. Main St. Ann Arbor, MI 48104
+
+hours:
+	8/1 - 4/31
+	su-th: 11:30-9
+	fr-sa: 11:30-10
+
+	5/1 - 7/31
+	su: 11:30-8:30
+	mo-th: 11:30-9
+	fr-sa: 11:30-10

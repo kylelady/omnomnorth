@@ -3,9 +3,12 @@ url: http://www.melangebistro.com
 address:  312 South Main Street, Ann Arbor, MI 48104
 
 hours:
-	m-we: 4pm-11pm
-	th-sa: 4pm-2am
+	m: 4pm-11pm
+	tu: 4-midnight
+	we: 4pm-11pm
+	th: 4-midnight
+	f-sa: 4pm-2am
 
 happy hour:
-	m-f: 4pm-6pm
-
+	m,w-f: 4pm-7pm
+	tu: 4-midnight
